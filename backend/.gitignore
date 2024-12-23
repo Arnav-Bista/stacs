@@ -2,3 +2,4 @@
 backend
 **/*.db
 **/*.swap
+tmp/
