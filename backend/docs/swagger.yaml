@@ -1,0 +1,54 @@
+definitions:
+  dto.Example:
+    properties:
+      count:
+        type: integer
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: .API Specification for the STACS Website
+  title: Stacs Website API
+  version: "1.0"
+paths:
+  /v1/example/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new example object
+      parameters:
+      - description: Data for the new example
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.Example'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.Example'
+      summary: Creates a new example object
+      tags:
+      - Examples
+  /v1/example/get:
+    get:
+      consumes:
+      - application/json
+      description: Get all example objects
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.Example'
+            type: array
+      summary: Get all example objects
+      tags:
+      - Examples
+swagger: "2.0"
