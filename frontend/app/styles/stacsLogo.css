@@ -1,0 +1,25 @@
+.murray-path {
+  fill: none;
+  stroke: #80808090;
+  stroke-dasharray: 76;
+  stroke-dashoffset: 76;
+  animation: 
+    drawPath 5s cubic-bezier(.41,0,0,1) forwards,
+    strokeWidth 5s cubic-bezier(1,-0.01,.6,1) forwards;
+}
+
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeWidth {
+  from {
+    stroke-width: 0.1;
+  }
+  to {
+    stroke-width: 0.5;
+  }
+}
+
