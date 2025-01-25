@@ -6,8 +6,6 @@
 // Im just going to try and look at it to replicate it because I dont understand the algorithm 🗿
 
 
-// "use client";
-
 import "@/app/styles/stacsLogo.css";
 
 type Point = [number, number];
@@ -20,7 +18,7 @@ export default function StacsLogo() {
   return (
     <div className="flex flex-col items-center justify-center relative gap-2">
       <svg
-        viewBox="0 -0.5 14 5"
+        viewBox="0 -0.5 14.5 5"
         className="w-full h-32"
       >
         <path
@@ -31,10 +29,10 @@ export default function StacsLogo() {
         />
       </svg>
 
-      <h1 className="text-[5rem] font-extrabold z-10 text-[#00527b] leading-none text-center">STACS</h1>
+      <h1 className=" w-full text-[5rem] font-extrabold z-10 text-[#00527b] leading-none text-center font-['Odibee_Sans']">STACS</h1>
 
       <svg
-        viewBox="0 -0.5 14 5"
+        viewBox="0 -0.5 14.5 5"
         className="w-full h-32"
       >
         <path

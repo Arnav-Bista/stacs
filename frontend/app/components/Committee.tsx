@@ -5,7 +5,7 @@ export default function Committee() {
     <div className="flex flex-col items-center justify-center w-full space-y-12">
       <section className="flex flex-col items-center w-full">
         <h2 className="text-3xl font-bold mb-4">EXECUTIVE COMMITTEE</h2>
-        <div className="flex flex-row flex-wrap justify-center gap-4 max-w-6xl mx-auto px-4">
+        <div className="flex flex-row flex-wrap justify-center max-w-6xl mx-auto px-4 gap-4">
           <CommitteeCard
             name="Tamzid Khandoker"
             position="President"
@@ -16,7 +16,7 @@ export default function Committee() {
           />
           <CommitteeCard
             name="Lucas Bookey"
-            position="First Year Rep"
+            position="First Year"
           />
           <CommitteeCard
             name="Marcus Darwin"
@@ -28,18 +28,18 @@ export default function Committee() {
           />
           <CommitteeCard
             name="Verity Powell"
-            position="Designer"
+            position="I forgot"
           />
           <CommitteeCard
             name="Xuan Wu"
-            position="Social Media"
+            position="Social Media & Designer"
           />
         </div>
       </section>
 
       <section className="flex flex-col items-center w-full">
         <h2 className="text-3xl font-bold mb-4">DEVELOPERS SUBCOMMITTEE</h2>
-        <div className="flex flex-row flex-wrap justify-center gap-4 max-w-6xl mx-auto px-4">
+        <div className="flex flex-row flex-wrap justify-center max-w-6xl mx-auto px-4 gap-4">
           <CommitteeCard
             name="Arnav Bista"
             position="President"
@@ -58,7 +58,7 @@ export default function Committee() {
           />
           <CommitteeCard
             name="Torrance Semple"
-            position="Member"
+            position="Second Year"
           />
           <CommitteeCard
             name="Matthew Pancer"

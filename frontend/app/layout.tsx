@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Code, Odibee_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import MurrayCurveBackground from "./components/Background";
 
 
 const firaCode = Fira_Code({
@@ -30,6 +31,8 @@ export default function RootLayout({
         className={`${firaCode.className} ${firaCode.variable} antialiased`}
       >
         <Navbar />
+        <MurrayCurveBackground />
+
         {children}
       </body>
     </html>

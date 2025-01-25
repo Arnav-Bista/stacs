@@ -83,8 +83,8 @@ def number_pts(r: list[int], start: int, inc: int) -> int:
     return res
 
 
-x_radices = [3, 5]
-y_radices = [5, 5]
+x_radices = [3, 5, 5, 5]
+y_radices = [5, 5, 5, 5]
 complexity = 2 * max(len(x_radices), len(y_radices))
 digits = [0] * (complexity + 1)
 radices = [1] * (complexity + 1)
