@@ -1,0 +1,221 @@
+import { Calendar, Clock, MapPin, Users, Share2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card, CardContent } from "@/components/ui/card"
+// import Image from "next/image"
+
+interface Speaker {
+  name: string
+  role: string
+  image: string
+  company: string
+}
+
+interface AgendaItem {
+  time: string
+  title: string
+  description: string
+  speaker?: string
+}
+
+const speakers: Speaker[] = [
+  {
+    name: "Dr. Sarah Chen",
+    role: "AI Research Lead",
+    company: "TechCorp AI",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Prof. James Wilson",
+    role: "Director of AI Ethics",
+    company: "Global AI Institute",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+  {
+    name: "Dr. Maria Rodriguez",
+    role: "ML Engineering Director",
+    company: "AI Solutions Inc",
+    image: "/placeholder.svg?height=400&width=400",
+  },
+]
+
+const agenda: AgendaItem[] = [
+  {
+    time: "09:00 AM",
+    title: "Registration & Welcome Coffee",
+    description: "Check-in and networking opportunity",
+  },
+  {
+    time: "10:00 AM",
+    title: "Keynote: The Future of AI",
+    description: "An exploration of upcoming AI trends and their impact",
+    speaker: "Dr. Sarah Chen",
+  },
+  {
+    time: "11:30 AM",
+    title: "Workshop: Practical AI Implementation",
+    description: "Hands-on session on implementing AI solutions",
+    speaker: "Prof. James Wilson",
+  },
+  {
+    time: "02:00 PM",
+    title: "Panel Discussion: AI Ethics",
+    description: "Expert panel on ethical considerations in AI development",
+    speaker: "Dr. Maria Rodriguez",
+  },
+]
+
+export default async function EventDetail({
+    params,
+  }: {
+    params: Promise<{ id: string }>
+  }) {
+  const id = (await params).id
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-timeline-icon text-white py-16">
+        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=1200')] opacity-20 bg-cover bg-center" />
+        <div className="relative container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex gap-2 mb-4">
+              {["Workshops", "AI Projects", "Games"].map((tag) => (
+                <Badge key={tag} variant="secondary" className="bg-white/10 text-white">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">AI Conclave 2025</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/90">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-5 h-5" />
+                <span>January 31st, 2025</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                <span>9:00 AM - 5:00 PM</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-5 h-5" />
+                <span>Tech Convention Center, Silicon Valley</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                <span>500 Expected Attendees</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex justify-between items-center mb-8">
+            <Button size="lg" className="bg-timeline-icon hover:bg-timeline-icon/90">
+              Register Now
+            </Button>
+            <Button variant="outline" size="icon">
+              <Share2 className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <Tabs defaultValue="about" className="mb-12">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="about">About</TabsTrigger>
+              <TabsTrigger value="agenda">Agenda</TabsTrigger>
+              <TabsTrigger value="speakers">Speakers</TabsTrigger>
+              <TabsTrigger value="venue">Venue</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="about" className="mt-6">
+              <div className="prose max-w-none">
+                <p className="text-lg text-muted-foreground">
+                  Join us for AI Conclave 2025, the premier gathering of AI professionals, researchers, and enthusiasts.
+                  This full-day event features workshops, keynote speeches, and hands-on projects that explore the
+                  latest developments in artificial intelligence.
+                </p>
+                <h3 className="text-xl font-semibold mt-6 mb-4">What to Expect</h3>
+                <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                  <li>Interactive workshops led by industry experts</li>
+                  <li>Networking opportunities with AI professionals</li>
+                  <li>Hands-on experience with cutting-edge AI projects</li>
+                  <li>Panel discussions on AI ethics and future trends</li>
+                  <li>Gaming sessions showcasing AI in entertainment</li>
+                </ul>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="agenda" className="mt-6">
+              <div className="space-y-6">
+                {agenda.map((item, index) => (
+                  <Card key={index}>
+                    <CardContent className="flex gap-4 p-6">
+                      <div className="w-24 flex-shrink-0">
+                        <div className="text-sm font-semibold text-timeline-icon">{item.time}</div>
+                      </div>
+                      <div>
+                        <h3 className="font-semibold mb-2">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
+                        {item.speaker && (
+                          <Badge variant="secondary" className="bg-timeline-tag text-black">
+                            {item.speaker}
+                          </Badge>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="speakers" className="mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {speakers.map((speaker, index) => (
+                  <Card key={index}>
+                    <CardContent className="p-6">
+                      <div className="aspect-square relative mb-4 rounded-lg overflow-hidden">
+                        {/* <Image
+                          src={speaker.image || "/placeholder.svg"}
+                          alt={speaker.name}
+                          fill
+                          className="object-cover"
+                        /> */}
+                        <img src="https://placeholder.pics/svg/250x250" alt={speaker.name} className="object-cover" />
+                      </div>
+                      <h3 className="font-semibold mb-1">{speaker.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-1">{speaker.role}</p>
+                      <p className="text-sm text-muted-foreground">{speaker.company}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="venue" className="mt-6">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="aspect-video relative mb-6 rounded-lg overflow-hidden">
+                    {/* <Image src="https://placeholder.pics/svg/800x400" alt="Venue" fill className="object-cover" /> */}
+                    <img src="https://placeholder.pics/svg/800x400" alt="Venue" className="object-cover" />
+                  </div>
+                  <h3 className="font-semibold mb-4">Tech Convention Center</h3>
+                  <p className="text-muted-foreground mb-4">
+                    123 Innovation Drive
+                    <br />
+                    Silicon Valley, CA 94025
+                  </p>
+                  <div className="flex gap-4">
+                    <Button variant="outline">Get Directions</Button>
+                    <Button variant="outline">View on Map</Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    </div>
+  )
+}
