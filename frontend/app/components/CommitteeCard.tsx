@@ -15,7 +15,7 @@ export default function CommitteeCard({ name, position, imageUrl }: CommitteeCar
     .toUpperCase();
 
   return (
-    <Card className="w-44 border-0 shadow-none">
+    <Card className="w-44">
       <CardContent className="flex flex-col items-center gap-4 pt-6">
         <Avatar className="w-24 h-24">
           {imageUrl ? (

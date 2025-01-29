@@ -4,8 +4,8 @@
   stroke-dasharray: 76;
   stroke-dashoffset: 76;
   animation: 
-    drawPath 5s cubic-bezier(.41,0,0,1) forwards,
-    strokeWidth 5s cubic-bezier(1,-0.01,.6,1) forwards;
+    drawPath 3s cubic-bezier(.41,0,0,1) forwards,
+    strokeWidth 3s cubic-bezier(1,-0.01,.6,1) forwards;
 }
 
 @keyframes drawPath {
