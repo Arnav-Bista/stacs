@@ -40,6 +40,11 @@ export default function Navbar() {
                 page3
               </li>
             </Link>
+            <Link href="/sponsors">
+              <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
+                sponsors
+              </li>
+            </Link>
           </ul>
         </div>
         <div onClick={handleNav} className="sm:hidden cursor-pointer pl-24">
