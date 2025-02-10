@@ -51,11 +51,7 @@ export default function Navbar() {
           <AiOutlineMenu size={25} />
         </div>
       </div>
-      <div className={
-        menuOpen
-          ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen bg-slate-500 p-10 ease-in duration-500"
-          : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
-      }>
+      <div className={`fixed top-0 left-0 h-screen w-full bg-slate-500 p-10 z-50 transform transition-transform duration-500 ease-in-out ${menuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-100"}`}>
         <div className="flex w-full items-center justify-end">
           <div onClick={handleNav} className="cursor-pointer">
             <AiOutlineClose size={25} />
