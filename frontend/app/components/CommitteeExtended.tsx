@@ -4,12 +4,12 @@ export default function CommitteeExtended() {
   return (
     <div className="flex flex-col items-center justify-center w-full space-y-12">
       <section className="flex flex-col items-center w-full">
-        <h2 className="text-3xl font-bold mb-4 text-center px-4 break-words">EXECUTIVE COMMITTEE</h2>
-        <div className="flex flex-col flex-wrap justify-center max-w-6xl mx-auto px-4 gap-4">
+        <h2 className="text-4xl font-bold mb-4 py-4 text-center break-words">EXECUTIVE COMMITTEE</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-x-16 gap-y-6 place-items-center">
           <CommitteeCardExtended
             name="Tamzid Khandoker"
             position="President"
-            description="Our glorious leader."
+            description="Our glorious leader, to which we pledge our bodies and souls. We love you Tamzid, luck be upon you."
           />
           <CommitteeCardExtended
             name="Ben Vardy"
@@ -36,6 +36,9 @@ export default function CommitteeExtended() {
             position="I forgot"
             description="I forgor"
           />
+          
+        </div>
+        <div className="py-6">
           <CommitteeCardExtended
             name="Xuan Wu"
             position="Social Media & Designer"
@@ -45,8 +48,8 @@ export default function CommitteeExtended() {
       </section>
 
       <section className="flex flex-col items-center w-full">
-        <h2 className="text-3xl font-bold mb-4 text-center px-4 break-words">DEVELOPERS SUBCOMMITTEE</h2>
-        <div className="flex flex-col flex-wrap justify-center max-w-6xl mx-auto px-4 gap-4">
+        <h2 className="text-4xl font-bold mb-4 py-4 text-center px-4 break-words">DEVELOPERS SUBCOMMITTEE</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-x-16 gap-y-6 place-items-center">
           <CommitteeCardExtended
             name="Arnav Bista"
             position="President"
