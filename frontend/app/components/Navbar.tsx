@@ -35,9 +35,9 @@ export default function Navbar() {
                 page2
               </li>
             </Link>
-            <Link href="/link3">
+            <Link href="/committee">
               <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
-                page3
+                committee
               </li>
             </Link>
             <Link href="/sponsors">
