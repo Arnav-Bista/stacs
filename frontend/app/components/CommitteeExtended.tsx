@@ -5,7 +5,7 @@ export default function CommitteeExtended() {
     <div className="flex flex-col items-center justify-center w-full space-y-12">
       <section className="flex flex-col items-center w-full">
         <h2 className="text-4xl font-bold mb-4 py-4 text-center break-words">EXECUTIVE COMMITTEE</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-x-16 gap-y-6 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-6xl gap-x-16 gap-y-6 place-items-center">
           <CommitteeCardExtended
             name="Tamzid Khandoker"
             position="President"
