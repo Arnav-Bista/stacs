@@ -16,7 +16,7 @@ export default function CommitteeCardExtended({ name, position, description, ima
     .toUpperCase();
 
   return (
-    <Card className="w-72 h-72 rounded-2xl shadow-lg border border-gray-200">
+    <Card className="w-96 h-72 rounded-2xl shadow-lg border border-gray-200">
       <CardContent className="p-6">
         <div className="grid grid-cols-2 gap-x-4">
             <div className="flex flex-col items-center gap-4 pt-6">
@@ -32,7 +32,7 @@ export default function CommitteeCardExtended({ name, position, description, ima
                     <p className="text-sm text-muted-foreground">{position}</p>
                 </div>
             </div>
-            <div className="flex-col items-center">
+            <div className="flex-col items-center py-6">
                 <p className="text-xs text-left">{description}</p>
             </div>
         </div>
