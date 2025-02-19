@@ -29,22 +29,22 @@ const events: TimelineEvent[] = [
 
 export default function Events() {
   return (
-    <div className="min-h-screen bg-white p-4 md:p-8">
+    <div className="min-h-screen bg-neutral-100 p-4 md:p-8">
       {/* Decorative Corner Elements */}
-      <div className="relative">
-        <div className="absolute top-10 left-0">
+      <div className="hidden md:block relative">
+        <div className="absolute top-10 left-0 z-0">
           <Image src="/decor.svg" width={50} height={50} alt="rocket" />
         </div>
-        <div className="absolute top-2 right-0">
+        <div className="absolute top-2 right-0 z-0">
             <Image className="transform rotate-180" src="/decor.svg" width={50} height={50} alt="rocket" />
         </div>
       </div>
 
       {/* Title */}
-      <h1 className="text-4xl font-bold text-center mb-16 mt-8">OUR EVENTS 2025</h1>
+      <h1 className="relative text-4xl font-bold text-center mb-16 mt-8 z-10">OUR EVENTS 2025</h1>
 
       {/* Timeline */}
-      <div className="relative max-w-5xl mx-auto">
+      <div className="hidden md:block relative max-w-5xl mx-auto">
         {/* Center Line */}
         <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-timeline-marker" />
         {/* Arrow Head */}
@@ -69,7 +69,7 @@ export default function Events() {
 
               {/* Event Card */}
               <div className={`w-[calc(50%-2rem)] ${index % 2 === 0 ? "mr-auto pr-8" : "ml-auto pl-8"}`}>
-                <div className="rounded-lg p-6 min-h-[200px]">
+                <div className="rounded-lg bg-white p-6 min-h-[200px]">
                   {/* Placeholder for content */}
                   {/* <div className="h-32 bg-timeline-card rounded-md mb-4" /> */}
                   <img src="https://placeholder.pics/svg/400x128" alt={event.title} className="object-cover rounded-md mb-4" />
@@ -93,6 +93,28 @@ export default function Events() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="md:hidden space-y-6">
+        {events.map((event, index) => (
+          <div key={index} className="bg-white rounded-lg p-4">
+            <div className="text-sm font-medium text-gray-600 mb-2">{event.date}</div>
+            <img src="https://placeholder.pics/svg/400x128" alt={event.title} className="w-full object-cover rounded-md mb-4" />
+            <div className="flex gap-2 mb-3 flex-wrap">
+              {event.tags.map((tag, tagIndex) => (
+                <Badge key={tagIndex} variant="secondary" className="bg-timeline-tag text-black">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <h3 className="text-lg font-semibold">{event.title}</h3>
+              <Link href="/events/1" className={`${buttonVariants({ variant: "outline" })} h-10 w-full sm:w-32`}>
+                View Event
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
