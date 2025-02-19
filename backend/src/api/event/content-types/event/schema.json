@@ -37,6 +37,11 @@
     },
     "tags": {
       "type": "json"
+    },
+    "agenda": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::agenda.agenda"
     }
   }
 }

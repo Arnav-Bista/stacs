@@ -10,7 +10,6 @@ import { fetchEvents } from "@/lib/api";
 export default async function Events() {
   // Fetch events from the Strapi backend
   const events = await fetchEvents();
-  console.log(events);
 
   return (
     <div className="min-h-screen bg-neutral-100 p-4 md:p-8">
@@ -107,7 +106,11 @@ export default async function Events() {
                 }`}
               >
                 <div className="rounded-lg bg-white p-6 min-h-[200px]">
-                  <img src={event.image || "https://placeholder.pics/svg/400x128"} alt={event.title} className="w-full object-cover rounded-md mb-4" />
+                  <img 
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${event.media[0].url}` || "https://placeholder.pics/svg/400x128"}
+                    alt={event.title}
+                    className="w-full object-cover rounded-md mb-4" 
+                  />
                   {/* <Image
                     src={event.media || "https://placeholder.pics/svg/400x128"}
                     alt={event.title}
@@ -133,7 +136,7 @@ export default async function Events() {
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold">{event.title}</h3>
                     <Link
-                      href={`/events/${event.id}`}
+                      href={`/events/${event.documentId}`}
                       className={`${buttonVariants({ variant: "outline" })} h-10 w-32 my-4`}
                     >
                       View Event
@@ -158,7 +161,7 @@ export default async function Events() {
                     minute: "numeric",
                   })}
             </div>
-            <img src={event.image || "https://placeholder.pics/svg/400x128"} alt={event.title} className="w-full object-cover rounded-md mb-4" />
+            <img src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${event.media[0].url}` || "https://placeholder.pics/svg/400x128"} alt={event.title} className="w-full object-cover rounded-md mb-4" />
             {/* <Image
               src={event.image || "https://placeholder.pics/svg/400x128"}
               alt={event.title}
@@ -180,7 +183,7 @@ export default async function Events() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <h3 className="text-lg font-semibold">{event.title}</h3>
               <Link
-                href={`/events/${event.id}`}
+                href={`/events/${event.documentId}`}
                 className={`${buttonVariants({ variant: "outline" })} h-10 w-full sm:w-32`}
               >
                 View Event
