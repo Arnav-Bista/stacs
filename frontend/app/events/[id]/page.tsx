@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 // import Image from "next/image"
+import { fetchEventById } from "@/lib/api"
 
 interface Speaker {
   name: string
@@ -72,6 +73,21 @@ export default async function EventDetail({
     params: Promise<{ id: string }>
   }) {
   const id = (await params).id
+  const event = await fetchEventById(id)
+  // console.log(event)
+
+  const agendaItems = event.agenda || [];
+
+  const speakersMap = new Map();
+  agendaItems.forEach((item: any) => {
+    if (item.speaker && !speakersMap.has(item.speaker.id)) {
+      speakersMap.set(item.speaker.id, item.speaker);
+    }
+  });
+  const speakers = Array.from(speakersMap.values());
+
+  console.log(speakers)
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -80,30 +96,46 @@ export default async function EventDetail({
         <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex gap-2 mb-4">
-              {["Workshops", "AI Projects", "Games"].map((tag) => (
-                <Badge key={tag} variant="secondary" className="bg-white/10 text-white">
+            {event.tags?.map((tag: string, tagIndex: number) => (
+                <Badge
+                  key={tagIndex}
+                  variant="secondary"
+                  className="bg-white/10 text-white"
+                >
                   {tag}
                 </Badge>
               ))}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">AI Conclave 2025</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{event.title}</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/90">
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
-                <span>January 31st, 2025</span>
+                <span>
+                  {new Date(event.datetime).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    weekday: "long",
+                  })}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5" />
-                <span>9:00 AM - 5:00 PM</span>
+                <span>
+                  {new Date(event.datetime).toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "numeric",
+                  })}
+                </span> {/* could add duration */}
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                <span>Tech Convention Center, Silicon Valley</span>
+                <span>{event.location}</span>
               </div>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <Users className="w-5 h-5" />
                 <span>500 Expected Attendees</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -112,55 +144,48 @@ export default async function EventDetail({
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
+          {/* <div className="flex justify-between items-center mb-8">
             <Button size="lg" className="bg-timeline-icon hover:bg-timeline-icon/90">
               Register Now
             </Button>
             <Button variant="outline" size="icon">
               <Share2 className="h-4 w-4" />
             </Button>
-          </div>
+          </div> */}
 
           <Tabs defaultValue="about" className="mb-12">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="about">About</TabsTrigger>
               <TabsTrigger value="agenda">Agenda</TabsTrigger>
               <TabsTrigger value="speakers">Speakers</TabsTrigger>
-              <TabsTrigger value="venue">Venue</TabsTrigger>
+              {/* <TabsTrigger value="venue">Venue</TabsTrigger> */}
             </TabsList>
 
             <TabsContent value="about" className="mt-6">
               <div className="prose max-w-none">
-                <p className="text-lg text-muted-foreground">
-                  Join us for AI Conclave 2025, the premier gathering of AI professionals, researchers, and enthusiasts.
-                  This full-day event features workshops, keynote speeches, and hands-on projects that explore the
-                  latest developments in artificial intelligence.
-                </p>
-                <h3 className="text-xl font-semibold mt-6 mb-4">What to Expect</h3>
-                <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                  <li>Interactive workshops led by industry experts</li>
-                  <li>Networking opportunities with AI professionals</li>
-                  <li>Hands-on experience with cutting-edge AI projects</li>
-                  <li>Panel discussions on AI ethics and future trends</li>
-                  <li>Gaming sessions showcasing AI in entertainment</li>
-                </ul>
+                <p>{event.description}</p>
               </div>
             </TabsContent>
 
             <TabsContent value="agenda" className="mt-6">
               <div className="space-y-6">
-                {agenda.map((item, index) => (
+                {agendaItems.map((item: any, index: number) => (
                   <Card key={index}>
                     <CardContent className="flex gap-4 p-6">
                       <div className="w-24 flex-shrink-0">
-                        <div className="text-sm font-semibold text-timeline-icon">{item.time}</div>
+                        <div className="text-sm font-semibold text-timeline-icon">
+                          {new Date(`${event.datetime.split("T")[0]}T${item.time}`).toLocaleTimeString("en-US", {
+                            hour: "numeric",
+                            minute: "numeric",
+                          })}
+                        </div>
                       </div>
                       <div>
                         <h3 className="font-semibold mb-2">{item.title}</h3>
                         <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
                         {item.speaker && (
                           <Badge variant="secondary" className="bg-timeline-tag text-black">
-                            {item.speaker}
+                            {item.speaker.name}
                           </Badge>
                         )}
                       </div>
@@ -171,33 +196,37 @@ export default async function EventDetail({
             </TabsContent>
 
             <TabsContent value="speakers" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {speakers.map((speaker, index) => (
-                  <Card key={index}>
-                    <CardContent className="p-6">
-                      <div className="aspect-square relative mb-4 rounded-lg overflow-hidden">
-                        {/* <Image
-                          src={speaker.image || "/placeholder.svg"}
-                          alt={speaker.name}
-                          fill
-                          className="object-cover"
-                        /> */}
-                        <img src="https://placeholder.pics/svg/250x250" alt={speaker.name} className="object-cover" />
-                      </div>
-                      <h3 className="font-semibold mb-1">{speaker.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-1">{speaker.role}</p>
-                      <p className="text-sm text-muted-foreground">{speaker.company}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {speakers.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {speakers.map((speaker: any, index: number) => (
+                    <Card key={index}>
+                      <CardContent className="p-6">
+                        <div className="aspect-square relative mb-4 rounded-lg overflow-hidden">
+                          {/* Replace with next/image if desired */}
+                          <img
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${speaker.image.url}` || "https://placeholder.pics/svg/250x250"}
+                            alt={speaker.name}
+                            className="object-cover"
+                            width={250}
+                            height={250}
+                          />
+                        </div>
+                        <h3 className="font-semibold mb-1">{speaker.name}</h3>
+                        <p className="text-sm text-muted-foreground mb-1">{speaker.role}</p>
+                        <p className="text-sm text-muted-foreground">{speaker.company}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              ) : (
+                <p>No speakers available.</p>
+              )}
             </TabsContent>
 
-            <TabsContent value="venue" className="mt-6">
+            {/* <TabsContent value="venue" className="mt-6">
               <Card>
                 <CardContent className="p-6">
                   <div className="aspect-video relative mb-6 rounded-lg overflow-hidden">
-                    {/* <Image src="https://placeholder.pics/svg/800x400" alt="Venue" fill className="object-cover" /> */}
                     <img src="https://placeholder.pics/svg/800x400" alt="Venue" className="object-cover" />
                   </div>
                   <h3 className="font-semibold mb-4">Tech Convention Center</h3>
@@ -212,7 +241,8 @@ export default async function EventDetail({
                   </div>
                 </CardContent>
               </Card>
-            </TabsContent>
+            </TabsContent> */}
+
           </Tabs>
         </div>
       </div>

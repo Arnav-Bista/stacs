@@ -4,12 +4,14 @@ interface EventCardProps {
   title: string
   date: string
   location: string
+  imgUrl: string
 }
 
-export default function EventCard({ title, date, location }: EventCardProps) {
+export default function EventCard({ title, date, location, imgUrl }: EventCardProps) {
   return (
     <Card className="max-w-xs overflow-hidden rounded-xl">
-      <div className="h-36 bg-muted" />
+      {/* <div className="h-36 bg-muted" /> */}
+      <img className="h-36 w-full object-cover" src={imgUrl} alt={title} />
       <CardContent className="p-4">
         <div className="flex gap-4">
           <div className="flex flex-col items-center">
