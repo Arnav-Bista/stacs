@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    NEXT_PUBLIC_STRAPI_URL: 'http://localhost:1337',
+  },
 };
 
 export default nextConfig;
