@@ -29,3 +29,25 @@ export async function fetchEventById(id: string) {
     return response.data;
 
 }
+
+export async function fetchCommittee() {
+    const response = await client.fetch('committees?populate[0]=photo', { method: 'GET' });
+    const data = await response.json();
+
+    if (!data || !data.data) {
+        throw new Error("Failed to fetch events");
+    }
+    return data.data;
+}
+
+export async function fetchCommitteeById(id: string) {
+    const committee = client.collection('committee');
+    const response = await committee.findOne(`${id}`, { populate: ['name', 'role', 'description', 'photo', 'executiveCommittee', 'memberID'] });
+
+    if (!response || !response.data) {
+        throw new Error("Failed to fetch event");
+    }
+
+    console.log(response);
+    return response.data;
+}

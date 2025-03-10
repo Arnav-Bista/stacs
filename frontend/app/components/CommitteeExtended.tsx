@@ -1,85 +1,36 @@
 import CommitteeCardExtended from "./CommitteeCardExtended";
+import { fetchCommittee } from "@/lib/api";
 
-export default function CommitteeExtended() {
+export default async function CommitteeExtended() {
+  const members = await fetchCommittee();
+  console.log(members);
   return (
     <div className="flex flex-col items-center justify-center w-full space-y-12">
       <section className="flex flex-col items-center w-full">
         <h2 className="text-4xl font-bold mb-4 py-4 text-center break-words">EXECUTIVE COMMITTEE</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 max-w-6xl gap-x-16 gap-y-6 place-items-center">
-          <CommitteeCardExtended
-            name="Tamzid Khandoker"
-            position="President"
-            description="Our glorious leader, to which we pledge our bodies and souls. We love you Tamzid, luck be upon you."
-          />
-          <CommitteeCardExtended
-            name="Ben Vardy"
-            position="Treasurer"
-            description="The money man."
-          />
-          <CommitteeCardExtended
-            name="Lucas Bookey"
-            position="First Year"
-            description="Minion Manager."
-          />
-          <CommitteeCardExtended
-            name="Marcus Darwin"
-            position="Events Manager"
-            description="Man behind the action."
-          />
-          <CommitteeCardExtended
-            name="Sophia Terry"
-            position="Secretary"
-            description="Email meme dealer."
-          />
-          <CommitteeCardExtended
-            name="Verity Powell"
-            position="I forgot"
-            description="I forgor"
-          />
-          
-        </div>
-        <div className="py-6">
-          <CommitteeCardExtended
-            name="Xuan Wu"
-            position="Social Media & Designer"
-            description="Propaganda minister."
-          />
+          {members.filter((member) => member.executiveCommittee).map((member) => (
+            <CommitteeCardExtended
+              name={member.name} 
+              position={member.role} 
+              description={member.description}
+              imageUrl={`${process.env.NEXT_PUBLIC_STRAPI_URL}${member.photo.url}`}
+            />
+          ))}
         </div>
       </section>
 
       <section className="flex flex-col items-center w-full">
         <h2 className="text-4xl font-bold mb-4 py-4 text-center px-4 break-words">DEVELOPERS SUBCOMMITTEE</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 max-w-6xl gap-x-16 gap-y-6 place-items-center">
-          <CommitteeCardExtended
-            name="Arnav Bista"
-            position="President"
-            description="PLACEHOLDER"
-          />
-          <CommitteeCardExtended
-            name="Jake Brockwell"
-            position="Security"
-            description="PLACEHOLDER"
-          />
-          <CommitteeCardExtended
-            name="Adam Kuka"
-            position="Designer & Generative AI"
-            description="PLACEHOLDER"
-          />
-          <CommitteeCardExtended
-            name="Hassan Mahmoud"
-            position="Game Development"
-            description="PLACEHOLDER"
-          />
-          <CommitteeCardExtended
-            name="Torrance Semple"
-            position="Second Year"
-            description="PLACEHOLDER"
-          />
-          <CommitteeCardExtended
-            name="Matthew Pancer"
-            position="Math Nerd"
-            description="PLACEHOLDER"
-          />
+          {members.filter((member) => !member.executiveCommittee).map((member) => (
+            <CommitteeCardExtended
+              name={member.name} 
+              position={member.role} 
+              description={member.description}
+              imageUrl={member.photo}
+            />
+          ))}
         </div>
       </section>
     </div>
