@@ -25,14 +25,9 @@ export default function Navbar() {
         </Link>
         <div className="hidden sm:flex">
           <ul className="hidden sm:flex">
-            <Link href="/link1">
+            <Link href="/events">
               <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
-                page1
-              </li>
-            </Link>
-            <Link href="/link2">
-              <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
-                page2
+                Events
               </li>
             </Link>
             <Link href="/committee">

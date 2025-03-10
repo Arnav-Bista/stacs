@@ -8,11 +8,13 @@ import MurrayCurveBackground from "./components/Background";
 const firaCode = Fira_Code({
   variable: "--font-fira-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 const OdibeeSans = Odibee_Sans({
   weight: ["400"],
   variable: "--font-odibee-sans",
+  preload: false,
 });
 
 export const metadata: Metadata = {
