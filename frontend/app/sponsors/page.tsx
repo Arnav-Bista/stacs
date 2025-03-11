@@ -27,7 +27,7 @@ export default function SponsorsPage() {
                 <Image src="/dorahacks_logo.png" alt="Dorahacks logo" width={200} height={200} />
                 <Image src="/ncr-atleos_logo.png" alt="NCR Atleos logo" width={200} height={200} />
             </div>
-        <Link href="/sponsor" className={`${buttonVariants({ variant: "outline" })} h-10 w-32 my-4`}>Support Us</Link>
+        <Link href="/sponsors/support" className={`${buttonVariants({ variant: "outline" })} h-10 w-32 my-4`}>Support Us</Link>
         </div>
     </main>
   );
