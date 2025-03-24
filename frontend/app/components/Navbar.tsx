@@ -25,6 +25,11 @@ export default function Navbar() {
         </Link>
         <div className="hidden sm:flex">
           <ul className="hidden sm:flex">
+            <Link href="/">
+              <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
+                Home
+              </li>
+            </Link>
             <Link href="/events">
               <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
                 Events
@@ -54,28 +59,36 @@ export default function Navbar() {
         </div>
         <div className="flex-col py-4">
           <ul>
-            <Link href="/link1">
+            <Link href="/">
               <li
                 onClick={() => setMenuOpen(false)}
                 className="py-4 cursor-pointer"
               >
-                page1
+                Home
               </li>
             </Link>
-            <Link href="/link2">
+            <Link href="/events">
               <li
                 onClick={() => setMenuOpen(false)}
                 className="py-4 cursor-pointer"
               >
-                page2
+                Events
               </li>
             </Link>
-            <Link href="/link3">
+            <Link href="/committee">
               <li
                 onClick={() => setMenuOpen(false)}
                 className="py-4 cursor-pointer"
               >
-                page3
+                Committee
+              </li>
+            </Link>
+            <Link href="/sponsors">
+              <li
+                onClick={() => setMenuOpen(false)}
+                className="py-4 cursor-pointer"
+              >
+                Sponsors
               </li>
             </Link>
           </ul>
