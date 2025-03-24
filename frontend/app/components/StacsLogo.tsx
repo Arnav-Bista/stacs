@@ -16,7 +16,7 @@ const points: Array<Point> = [[0, 0], [1, 0], [2, 0], [2, 1], [1, 1], [0, 1], [0
 
 // Time for some not very nice coding (forgive me)
 
-const sPoints = [[-0.25, 0], [0, 0], [1, 0], [2, 0], [2, 1], [1, 1], [0, 1], [0, 2], [1, 2], [2.25, 2] ];
+const sPoints = [[-0.25, 0], [0, 0], [1, 0], [2, 0], [2, 1], [1, 1], [0, 1], [0, 2], [1, 2], [2.25, 2]];
 
 const tPoints1 = [[2.75, 2], [4, 2], [5.25, 2]];
 const tPoints2 = [[4, 2], [4, -0.25]];
@@ -44,13 +44,13 @@ export default function StacsLogo() {
       </svg>
 
       <svg viewBox="0 0.5 14.5 5" className="w-full h-28 my-[-1rem]">
-          <path className="stacs-letter" d={`M ${sPoints.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
-          <path className="stacs-letter" d={`M ${tPoints1.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
-          <path className="stacs-letter" d={`M ${tPoints2.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
-          <path className="stacs-letter" d={`M ${aPoints1.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
-          <path className="stacs-letter" d={`M ${aPoints2.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
-          <path className="stacs-letter" d={`M ${cPoints.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
-          <path className="stacs-letter" d={`M ${s2Points.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
+        <path className="stacs-letter" d={`M ${sPoints.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
+        <path className="stacs-letter" d={`M ${tPoints1.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
+        <path className="stacs-letter" d={`M ${tPoints2.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
+        <path className="stacs-letter" d={`M ${aPoints1.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
+        <path className="stacs-letter" d={`M ${aPoints2.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
+        <path className="stacs-letter" d={`M ${cPoints.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
+        <path className="stacs-letter" d={`M ${s2Points.map(point => `${point[0]} ${4 - point[1]}`).join(' L ')}`} />
       </svg>
 
       <svg
