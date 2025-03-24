@@ -31,6 +31,19 @@
     },
     "memberId": {
       "type": "uid"
+    },
+    "description": {
+      "type": "text"
+    },
+    "committeeType": {
+      "type": "enumeration",
+      "enum": [
+        "executive",
+        "developer"
+      ]
+    },
+    "startDate": {
+      "type": "date"
     }
   }
 }

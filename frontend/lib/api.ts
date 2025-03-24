@@ -6,6 +6,8 @@ const client = strapi({
     auth: process.env.STRAPI_API_TOKEN
 });
 
+export default client;
+
 export async function fetchEvents() {
     try {
         const response = await client.fetch(`events?populate[0]=media`, { method: 'GET' });
@@ -41,21 +43,7 @@ export async function fetchEventById(id: string) {
 
 }
 
-export async function fetchCommittee() {
-    try {
-        const response = await client.fetch('committees?populate[0]=photo', { method: 'GET' });
-        const data = await response.json();
 
-        if (!data || !data.data) {
-            throw new Error("Failed to fetch committee data");
-        }
-        return data.data;
-    } catch (error) {
-        console.error('Error fetching committee:', error);
-        throw new Error('Failed to fetch committee data: ' + (error instanceof Error ? error.message : 'Unknown error'));
-    }
-
-}
 
 export async function fetchCommitteeById(id: string) {
     try {

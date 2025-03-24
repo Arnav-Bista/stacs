@@ -413,9 +413,11 @@ export interface ApiCommitteeCommittee extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    committeeType: Schema.Attribute.Enumeration<['executive', 'developer']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -427,6 +429,7 @@ export interface ApiCommitteeCommittee extends Struct.CollectionTypeSchema {
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;
+    startDate: Schema.Attribute.Date;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
