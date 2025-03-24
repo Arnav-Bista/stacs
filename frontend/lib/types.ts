@@ -4,7 +4,7 @@ export interface Photo {
     name: string;
     alternativeText: string | null;
     caption: string | null;
-    width: number;
+width: number;
     height: number;
     formats: object;
     hash: string;
@@ -45,4 +45,18 @@ export interface CommitteeMember {
     committeeType: CommitteeType;
     photo: Photo;
     startDate: string;
+}
+
+export interface Event {
+    id: number;
+    documentId: string;
+    title: string;
+    datetime: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    location: string;
+    tags: string;
+    media: Photo[]; // Assuming media is an array of some type
 }

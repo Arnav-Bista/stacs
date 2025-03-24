@@ -1,5 +1,6 @@
 // frontend/lib/api.ts
 import { strapi } from '@strapi/client';
+import { Event, Paginated } from './types';
 
 const client = strapi({
     baseURL: `${process.env.NEXT_PUBLIC_STRAPI_URL}/api`,
@@ -10,12 +11,11 @@ export default client;
 
 export async function fetchEvents() {
     try {
-        const response = await client.fetch(`events?populate[0]=media`, { method: 'GET' });
-        const data = await response.json();
-        
-        if (!data || !data.data) {
-            throw new Error("Failed to fetch events");
-        }
+        const response = await client.fetch(`events?populate=media`, { method: 'GET' });
+        const data: Paginated<Event> = await response.json();
+        // console.log(data);
+        // console.log(data.data[0].media);
+
         return data.data;
     } catch (error) {
         console.log('Error fetching events:', error);
@@ -23,12 +23,12 @@ export async function fetchEvents() {
     }
 
 }
-  
+
 
 export async function fetchEventById(id: string) {
     try {
         const events = client.collection('events');
-        const response = await events.findOne(`${id}`, { populate: ['media', 'agenda', 'agenda.speaker', 'agenda.speaker.image' ] });
+        const response = await events.findOne(`${id}`, { populate: ['media', 'agenda', 'agenda.speaker', 'agenda.speaker.image'] });
 
         if (!response || !response.data) {
             throw new Error("Failed to fetch event");

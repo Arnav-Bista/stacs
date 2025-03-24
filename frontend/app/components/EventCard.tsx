@@ -1,21 +1,22 @@
 import { Card, CardContent } from "@/components/ui/card"
 
 interface EventCardProps {
-  title: string
-  date: string
-  location: string
-  imgUrl: string
+  className?: string,
+  title: string,
+  date: string,
+  location: string,
+  imgUrl: string,
 }
 
-export default function EventCard({ title, date, location, imgUrl }: EventCardProps) {
+export default function EventCard({ title, date, location, imgUrl, className }: EventCardProps) {
   return (
-    <Card className="max-w-xs overflow-hidden rounded-xl">
+    <Card className={`max-w-xs overflow-hidden rounded-xl w-full ${className}`}>
       {/* <div className="h-36 bg-muted" /> */}
       <img className="h-36 w-full object-cover" src={imgUrl} alt={title} />
       <CardContent className="p-4">
         <div className="flex gap-4">
           <div className="flex flex-col items-center">
-            <span className="text-xs text-gray-400 uppercase">{date.split(' ')[1]}</span>
+            <span className="text-gray-400 uppercase">{date.split(' ')[1]}</span>
             <span className="text-xl font-bold">{date.split(' ')[0]}</span>
           </div>
           <div className="space-y-1">
