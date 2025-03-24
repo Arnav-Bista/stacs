@@ -23,3 +23,15 @@
   }
 }
 
+
+.stacs-letter {
+  fill: none;
+  stroke: #00527b;
+  stroke-width: 0.5;
+  stroke-dashoffset: 11;
+  stroke-dasharray: 11;
+  animation: 
+    drawPath 4s cubic-bezier(.41,0,0,1) forwards,
+    strokeWidth 3s cubic-bezier(1,-0.01,.6,1) forwards;
+}
+
