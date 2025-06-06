@@ -3,30 +3,11 @@
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import client from "@/lib/api";
-import { Event, Paginated } from "@/lib/types";
+import { fetchEvents } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function fetchEvents(numberOfEvents?: number): Promise<Event[]> {
-  try {
-    let query = 'events?populate=media&sort=datetime:desc';
-    if (numberOfEvents) {
-      query += `&pagination[limit]=${numberOfEvents}`;
-    }
-    const response = await client.fetch(query, { method: 'GET' });
-    const data: Paginated<Event> = await response.json();
-    console.log('Fetched events:', JSON.stringify(data.data, null, 2));
-    return data.data;
-  } catch (error) {
-    console.log('Error fetching events:', error);
-    throw new Error('Failed to fetch events: ' + (error instanceof Error ? error.message : 'Unknown error'));
-  }
-}
-
-// Notice the component is async to allow server-side data fetching
 export default async function Events() {
-  // Fetch events from the Strapi backend
   const events = await fetchEvents();
 
   return (

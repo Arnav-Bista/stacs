@@ -1,5 +1,4 @@
-import MurrayCurveBackground from "../components/Background";
-import CommitteeExtended from "../components/CommitteeExtended";
+import CommitteeExtended from "@/components/features/committee/CommitteeExtended";
 
 export default function Home() {
   return (
@@ -10,7 +9,7 @@ export default function Home() {
         WebkitBackdropFilter: 'blur(8px)',
       }}>
         <div className="flex flex-col justify-center items-center p-10 w-full gap-4">
-            <CommitteeExtended />
+          <CommitteeExtended />
         </div>
       </div>
     </main>

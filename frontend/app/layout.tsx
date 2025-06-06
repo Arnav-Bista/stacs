@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Fira_Code, Odibee_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import MurrayCurveBackground from "./components/Background";
-
+import Navbar from "@/components/layout/Navbar";
+import MurrayCurveBackground from "@/components/layout/Background";
 
 const firaCode = Fira_Code({
   variable: "--font-fira-mono",

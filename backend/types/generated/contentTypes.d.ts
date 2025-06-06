@@ -505,6 +505,7 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
 export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
   collectionName: 'sponsors';
   info: {
+    description: '';
     displayName: 'Sponsor';
     pluralName: 'sponsors';
     singularName: 'sponsor';
@@ -513,6 +514,7 @@ export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    backgroundColor: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -526,6 +528,7 @@ export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
     logoSmall: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    textColor: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
