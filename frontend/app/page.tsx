@@ -4,6 +4,7 @@ import AboutUs from "@/components/features/home/AboutUs";
 import SponsorsHome from "@/components/features/sponsors/SponsorsHome";
 import StacsLogo from "@/components/shared/StacsLogo";
 import { fetchSponsors } from "../lib/api";
+import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
   fetchSponsors();
@@ -16,6 +17,8 @@ export default function HomePage() {
       }}>
         <StacsLogo />
         <AboutUs />
+
+        <Button className="bg-[#00527b] w-full max-w-2xl mx-auto"><p className="text-lg font-bold">BECOME A MEMBER</p></Button>
         <SponsorsHome />
         <EventsHome />
         <Committee />
