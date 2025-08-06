@@ -20,53 +20,6 @@ interface AgendaItem {
   speaker?: string
 }
 
-const speakers: Speaker[] = [
-  {
-    name: "Dr. Sarah Chen",
-    role: "AI Research Lead",
-    company: "TechCorp AI",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-  {
-    name: "Prof. James Wilson",
-    role: "Director of AI Ethics",
-    company: "Global AI Institute",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-  {
-    name: "Dr. Maria Rodriguez",
-    role: "ML Engineering Director",
-    company: "AI Solutions Inc",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-]
-
-const agenda: AgendaItem[] = [
-  {
-    time: "09:00 AM",
-    title: "Registration & Welcome Coffee",
-    description: "Check-in and networking opportunity",
-  },
-  {
-    time: "10:00 AM",
-    title: "Keynote: The Future of AI",
-    description: "An exploration of upcoming AI trends and their impact",
-    speaker: "Dr. Sarah Chen",
-  },
-  {
-    time: "11:30 AM",
-    title: "Workshop: Practical AI Implementation",
-    description: "Hands-on session on implementing AI solutions",
-    speaker: "Prof. James Wilson",
-  },
-  {
-    time: "02:00 PM",
-    title: "Panel Discussion: AI Ethics",
-    description: "Expert panel on ethical considerations in AI development",
-    speaker: "Dr. Maria Rodriguez",
-  },
-]
-
 export default async function EventDetail({
     params,
   }: {

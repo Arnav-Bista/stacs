@@ -29,12 +29,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${firaCode.className} ${firaCode.variable} antialiased`}
+        className={`${firaCode.className} ${firaCode.variable}`}
       >
         <Navbar />
         <MurrayCurveBackground />
-
-        {children}
+        <main className="items-center mx-auto max-w-screen-md w-full" >
+          <div className="flex flex-col justify-center items-center gap-2">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );

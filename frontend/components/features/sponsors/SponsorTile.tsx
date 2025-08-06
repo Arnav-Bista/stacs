@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 
 interface SponsorTileProps {
@@ -50,12 +51,20 @@ export function SponsorTileSmall(props: SponsorTileProps) {
 
 export function SponsorTileLogo(props: SponsorTileProps) {
   return (
-  <Card>
+    <Card>
       <img
         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${props.imageUrl || "https://placeholder.pics/svg/100"}`}
         alt={props.name || "Sponsor Logo"}
         className="h-20 max-w-72 object-contain m-4"
       />
+    </Card>
+  );
+}
+
+export function SponsorTileLogoLoading({ className }: { className?: string }) {
+  return (
+    <Card>
+      <Skeleton className={`h-28 w-40 rounded ${className}`} />
     </Card>
   );
 }
