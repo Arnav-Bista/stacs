@@ -15,7 +15,7 @@ export default function CommitteePageLoading() {
       <p className="text-center">
         The team responsible for workshops, the CTF, seeking student speakers and organising events for the love of the game.
       </p>
-      <div className="flex flex-wrap justify-center w-full gap-4 ">
+      <div className="flex flex-wrap justify-center w-full gap-4 mt-4">
         {Array.from({ length: 6 }).map((_, index) => <CommitteeCardExtendedLoading key={index} />)}
       </div>
     </>
