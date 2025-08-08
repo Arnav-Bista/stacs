@@ -3,17 +3,17 @@ import EventsHome from "@/components/features/event/EventsHome";
 import AboutUs from "@/components/features/home/AboutUs";
 import SponsorsHome from "@/components/features/sponsors/SponsorsHome";
 import Logo from "@/components/shared/Logo";
-import { fetchSponsors } from "../lib/api";
 import { Button } from "@/components/ui/button";
 import { ReactNode, Suspense } from "react";
 import SponsorsHomeLoading from "@/components/features/sponsors/SponsorsHomeLoading";
 import EventHomeLoading from "@/components/features/event/EventsHomeLoading";
+import { fetchSponsors } from "@/lib/api";
 
 export default function HomePage() {
   fetchSponsors();
   return (
     <>
-      <Logo className="my-8" />
+      <Logo className="mb-8" />
       <Button className="my-4 w-3/4 mx-auto !bg-primary">BECOME A MEMBER</Button>
       <h1>ABOUT US</h1>
       <HomeText>

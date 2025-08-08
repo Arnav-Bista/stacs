@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fira_Code, Odibee_Sans } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import MurrayCurveBackground from "@/components/layout/Background";
 
@@ -34,7 +34,7 @@ export default function RootLayout({
         <Navbar />
         <MurrayCurveBackground />
         <main className="items-center mx-auto max-w-screen-md w-full" >
-          <div className="flex flex-col justify-center items-center gap-2">
+          <div className="flex flex-col justify-center items-center gap-2 pt-8">
             {children}
           </div>
         </main>
