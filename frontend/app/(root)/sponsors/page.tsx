@@ -11,7 +11,7 @@ export default async function SponsorsPage() {
     <>
       <h1>OUR SPONSORS</h1>
       <p>STACS would not be what it is without their support.</p>
-      <div className="flex flex-row gap-y-4 gap-x-20 justify-center items-center">
+      <div className="flex flex-row flex-wrap gap-y-4 gap-x-20 justify-center items-center">
         {
           sponsors.map((sponsor, index) =>
             <SponsorTileLogo
