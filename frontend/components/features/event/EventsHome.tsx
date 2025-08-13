@@ -6,7 +6,27 @@ import { Event } from "@/lib/types/event";
 
 export default async function EventsHome() {
 
-  const events: Event[] = await fetchEvents();
+  const events = await fetchEvents();
+
+  if (events instanceof Error) {
+    return (
+      <div className="flex flex-wrap justify-center gap-6 w-full">
+          {Array.from({ length: 3 }).map((_, index) => (
+              <EventCard
+                key={index}
+                title=":("
+                date={
+                  new Date().toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                  })}
+                location="No idea!"
+                // imgUrl={`${process.env.NEXT_PUBLIC_STRAPI_URL}${(event.media ?? [])[0]?.url}` || "https://placeholder.pics/svg/400x128"}
+              />
+            ))}
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-wrap justify-center gap-6 w-full">

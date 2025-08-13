@@ -1,7 +1,7 @@
 import { Paginated, Sponsor } from "../types";
 import client from "./core";
 
-export async function fetchSponsors() {
+export async function fetchSponsors(): Promise<Sponsors[] | Error> {
     // WARNING: Strapi will by default do pagination
     // if Sponsors will be greater than 25 (i wish lmao) then either increase page size or implement pagination properly
     try {
@@ -12,6 +12,6 @@ export async function fetchSponsors() {
     }
     catch (error) {
         console.error("Error fetching sponsors:", error);
-        throw error;
+        return error;
     }
 }

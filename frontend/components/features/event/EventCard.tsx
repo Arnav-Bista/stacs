@@ -5,7 +5,7 @@ interface EventCardProps {
   title: string,
   date: string,
   location: string,
-  imgUrl: string,
+  imgUrl?: string,
 }
 
 export default function EventCard({ title, date, location, imgUrl, className }: EventCardProps) {
