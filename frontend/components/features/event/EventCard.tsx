@@ -48,7 +48,7 @@ export default function EventCard(props: EventCardProps) {
             alt={props.alt}
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+          <div className="h-full w-full bg-gradient-to-br from-primary/20 to-primary/10 backdrop-blur-sm flex items-center justify-center border border-primary/10">
             <h4 className="text-sm font-medium text-primary text-center px-4 leading-tight">
               {props.alt}
             </h4>
@@ -59,7 +59,7 @@ export default function EventCard(props: EventCardProps) {
 
       <CardContent className="p-4">
         <div className="flex gap-4">
-          <div className="flex flex-col items-center justify-center min-w-[3rem] p-2 bg-primary/5 rounded-lg border border-primary/10">
+          <div className="flex flex-col items-center justify-center min-w-[3rem] p-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20">
             <span className="text-xs text-muted-foreground font-medium uppercase tracking-wide">
               {month}
             </span>

@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <Navbar />
         <MurrayCurveBackground />
-        <main className="items-center mx-auto max-w-screen-md w-full" >
+        <main className="items-center mx-auto max-w-screen-lg w-full" >
           <div className="flex flex-col justify-center items-center gap-2 pt-8">
             {children}
           </div>

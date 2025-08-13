@@ -53,7 +53,7 @@ export default async function EventDetail({
                 <Badge
                   key={tagIndex}
                   variant="secondary"
-                  className="bg-white/10 text-white"
+                  className="bg-white/20 backdrop-blur-sm text-white border border-white/20"
                 >
                   {tag}
                 </Badge>
