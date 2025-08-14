@@ -15,14 +15,26 @@ export default async function Events() {
         OUR EVENTS 2025
       </h1>
 
-      {events.length === 0 && (
+      {!(events instanceof Error) && events.length === 0 && (
         <div className="text-center text-lg font-semibold text-gray-600">
           No upcoming events. Check back later!
         </div>
       )}
 
-      <EventsTimeline events={events} />
-      <EventsMobile events={events} />
+      {events instanceof Error && (
+        <div className="text-center text-lg font-semibold text-gray-600">
+          Something went wrong. Check back later!
+        </div>
+      )}
+
+      {
+        !(events instanceof Error) && (
+          <>
+            <EventsTimeline events={events} />
+            <EventsMobile events={events} />
+          </>
+        )
+      }
     </div>
   );
 }

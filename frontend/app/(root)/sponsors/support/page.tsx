@@ -121,7 +121,7 @@ export default function SponsorSupportPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="mailto:contact@stacs.cs.st-andrews.ac.uk?subject=Sponsorship Inquiry" 
+                href="mailto:stacs@st-andrews.ac.uk?subject=Sponsorship Inquiry" 
                 className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-8 py-3 text-lg"
               >
                 Contact Us About Sponsorship

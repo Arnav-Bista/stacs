@@ -1,6 +1,4 @@
-import Link from "next/link";
-import SponsorTile, { SponsorTileLogo, SponsorTileLogoLoading, SponsorTileSmall } from "./SponsorTile";
-import { buttonVariants } from "@/components/ui/button";
+import { SponsorTileLogo } from "./SponsorTile";
 import { fetchSponsors } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 
@@ -43,5 +41,3 @@ export default async function SponsorsHome() {
     </div>
   );
 }
-
-// <Link href="/sponsor" className={`${buttonVariants({ variant: "outline" })} h-10 w-32 my-4`}>Support Us</Link>
