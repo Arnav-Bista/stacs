@@ -56,6 +56,9 @@ export default function HomePage() {
         <Link href="/events">SEE MORE</Link>
       </Button>
       <Committee />
+      <Button asChild className="mt-4 mb-10 w-3/4 mx-auto !bg-primary">
+        <Link href="/committee">MEET THE COMMITTEE</Link>
+      </Button>
     </>
   );
 }
