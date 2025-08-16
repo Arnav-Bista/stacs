@@ -1,12 +1,19 @@
+"use client";
+
 import { buttonVariants } from "@/components/ui/button";
 import EventCard from "./EventCard";
 import Link from "next/link";
 import { fetchEvents } from "@/lib/api/events";
 import { Event } from "@/lib/types/event";
+import { useEffect, useState } from "react";
+import EventHomeLoading from "./EventsHomeLoading";
 
-export default async function EventsHome() {
+export default function EventsHome() {
+  const [events, setEvents] = useState<Event[] | Error | null>(null);
 
-  const events = await fetchEvents();
+  useEffect(() => {
+    fetchEvents().then(setEvents);
+  }, []);
 
   const offset = Math.floor(Math.random() * 10);
   const eventsErrorTitle = [
@@ -22,6 +29,10 @@ export default async function EventsHome() {
     "I'm a teapot",
     "Cause of error: an error occurred",
   ];
+
+  if (events === null) {
+    return <EventHomeLoading />;
+  }
 
   if (events instanceof Error) {
     return (

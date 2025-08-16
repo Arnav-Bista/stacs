@@ -5,6 +5,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { fetchSponsors } from "@/lib/api";
 import { SponsorTileLarge, SponsorTileLogo } from "@/components/features/sponsors/SponsorTile";
 
+export const revalidate = 300; // 5 minutes
+
 export default async function SponsorsPage() {
   const sponsors = await fetchSponsors();
   

@@ -8,6 +8,8 @@ import { fetchEventById } from "@/lib/api"
 import { notFound } from "next/navigation"
 import { AgendaItem } from "@/lib/types/event"
 
+export const revalidate = 300; // 5 minutes
+
 function formatDateTime(datetime: string | undefined, options: Intl.DateTimeFormatOptions) {
   if (!datetime) return "Date not available";
   try {
@@ -76,13 +78,13 @@ export default async function EventDetail({
         <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex gap-2 mb-4">
-            {event.tags?.map((tag: string, tagIndex: number) => (
+            {event.tags?.split(',').map((tag: string, tagIndex: number) => (
                 <Badge
                   key={tagIndex}
                   variant="secondary"
                   className="bg-white/20 backdrop-blur-sm text-white border border-white/20"
                 >
-                  {tag}
+                  {tag.trim()}
                 </Badge>
               ))}
             </div>

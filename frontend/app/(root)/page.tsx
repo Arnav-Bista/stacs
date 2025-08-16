@@ -10,6 +10,8 @@ import EventHomeLoading from "@/components/features/event/EventsHomeLoading";
 import { fetchSponsors } from "@/lib/api";
 import Link from "next/link";
 
+export const revalidate = 300; // 5 minutes
+
 export default function HomePage() {
   fetchSponsors();
   return (

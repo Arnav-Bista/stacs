@@ -3,6 +3,8 @@ import CommitteeCard from "@/components/features/committee/CommitteeCard";
 import { fetchCommittee } from "@/lib/api";
 import { CommitteeType } from "@/lib/types";
 
+export const revalidate = 300; // 5 minutes
+
 export default async function Committee() {
   const members = await fetchCommittee();
 

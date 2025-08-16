@@ -5,6 +5,17 @@ import { CommitteeType } from "@/lib/types/index";
 
 export default async function CommitteeExtended() {
   const members = await fetchCommittee();
+  
+  if (members instanceof Error) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full space-y-12">
+        <div className="text-center text-muted-foreground">
+          Unable to load committee members at the moment. Please try again later.
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <div className="flex flex-col items-center justify-center w-full space-y-12">
       <CommitteeSection title="EXECUTIVE COMMITTEE">
