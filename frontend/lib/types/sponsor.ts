@@ -6,4 +6,5 @@ export interface Sponsor {
     logoBig?: Photo;
     textColor?: string;
     backgroundColor?: string;
+    website?: string;
 }

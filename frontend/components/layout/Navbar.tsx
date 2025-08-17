@@ -4,12 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineInstagram, AiOutlineLinkedin } from "react-icons/ai";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
+  }
+
+  const isActive = (path: string) => {
+    return pathname === path;
   }
 
   return (
@@ -25,26 +31,34 @@ export default function Navbar() {
         </Link>
         <div className="hidden sm:flex">
           <ul className="hidden sm:flex">
-            <Link href="/">
-              <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
+            <li>
+              <Link href="/" className={`ml-10 uppercase text-xl hover:text-gray-500 ${
+                isActive('/') ? 'text-primary' : 'text-gray-800'
+              }`}>
                 Home
-              </li>
-            </Link>
-            <Link href="/events">
-              <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
+              </Link>
+            </li>
+            <li>
+              <Link href="/events" className={`ml-10 uppercase text-xl hover:text-gray-500 ${
+                isActive('/events') ? 'text-primary' : 'text-gray-800'
+              }`}>
                 Events
-              </li>
-            </Link>
-            <Link href="/committee">
-              <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
+              </Link>
+            </li>
+            <li>
+              <Link href="/committee" className={`ml-10 uppercase text-xl hover:text-gray-500 ${
+                isActive('/committee') ? 'text-primary' : 'text-gray-800'
+              }`}>
                 committee
-              </li>
-            </Link>
-            <Link href="/sponsors">
-              <li className="ml-10 uppercase text-xl text-gray-800 hover:text-gray-500">
+              </Link>
+            </li>
+            <li>
+              <Link href="/sponsors" className={`ml-10 uppercase text-xl hover:text-gray-500 ${
+                isActive('/sponsors') ? 'text-primary' : 'text-gray-800'
+              }`}>
                 sponsors
-              </li>
-            </Link>
+              </Link>
+            </li>
           </ul>
         </div>
         <div onClick={handleNav} className="sm:hidden cursor-pointer pl-24">
@@ -59,38 +73,50 @@ export default function Navbar() {
         </div>
         <div className="flex-col py-4">
           <ul>
-            <Link href="/">
-              <li
+            <li>
+              <Link
+                href="/"
                 onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
+                className={`block py-4 cursor-pointer ${
+                  isActive('/') ? 'text-primary' : 'text-white'
+                }`}
               >
                 Home
-              </li>
-            </Link>
-            <Link href="/events">
-              <li
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/events"
                 onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
+                className={`block py-4 cursor-pointer ${
+                  isActive('/events') ? 'text-primary' : 'text-white'
+                }`}
               >
                 Events
-              </li>
-            </Link>
-            <Link href="/committee">
-              <li
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/committee"
                 onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
+                className={`block py-4 cursor-pointer ${
+                  isActive('/committee') ? 'text-primary' : 'text-white'
+                }`}
               >
                 Committee
-              </li>
-            </Link>
-            <Link href="/sponsors">
-              <li
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/sponsors"
                 onClick={() => setMenuOpen(false)}
-                className="py-4 cursor-pointer"
+                className={`block py-4 cursor-pointer ${
+                  isActive('/sponsors') ? 'text-primary' : 'text-white'
+                }`}
               >
                 Sponsors
-              </li>
-            </Link>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="flex flex-row justify-around pt-10 items-center">

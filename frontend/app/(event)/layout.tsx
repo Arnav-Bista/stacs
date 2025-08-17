@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fira_Code, Odibee_Sans } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import MurrayCurveBackground from "@/components/layout/Background";
 
@@ -29,11 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${firaCode.className} ${firaCode.variable} antialiased`}
+        className={`${firaCode.className} ${firaCode.variable}`}
       >
         <Navbar />
         <MurrayCurveBackground />
-
         {children}
       </body>
     </html>

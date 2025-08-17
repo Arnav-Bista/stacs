@@ -5,67 +5,42 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 // import Image from "next/image"
 import { fetchEventById } from "@/lib/api"
+import { notFound } from "next/navigation"
+import { AgendaItem } from "@/lib/types/event"
 
-interface Speaker {
-  name: string
-  role: string
-  image: string
-  company: string
+export const revalidate = 300; // 5 minutes
+
+function formatDateTime(datetime: string | undefined, options: Intl.DateTimeFormatOptions) {
+  if (!datetime) return "Date not available";
+  try {
+    return new Date(datetime).toLocaleString("en-US", options);
+  } catch {
+    return "Invalid date";
+  }
 }
 
-interface AgendaItem {
-  time: string
-  title: string
-  description: string
-  speaker?: string
+function formatTime(datetime: string, time: string) {
+  if (!datetime || !time) return "Time not available";
+  try {
+    return new Date(`${datetime.split("T")[0]}T${time}`).toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+    });
+  } catch {
+    return "Invalid time";
+  }
 }
 
-const speakers: Speaker[] = [
-  {
-    name: "Dr. Sarah Chen",
-    role: "AI Research Lead",
-    company: "TechCorp AI",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-  {
-    name: "Prof. James Wilson",
-    role: "Director of AI Ethics",
-    company: "Global AI Institute",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-  {
-    name: "Dr. Maria Rodriguez",
-    role: "ML Engineering Director",
-    company: "AI Solutions Inc",
-    image: "/placeholder.svg?height=400&width=400",
-  },
-]
-
-const agenda: AgendaItem[] = [
-  {
-    time: "09:00 AM",
-    title: "Registration & Welcome Coffee",
-    description: "Check-in and networking opportunity",
-  },
-  {
-    time: "10:00 AM",
-    title: "Keynote: The Future of AI",
-    description: "An exploration of upcoming AI trends and their impact",
-    speaker: "Dr. Sarah Chen",
-  },
-  {
-    time: "11:30 AM",
-    title: "Workshop: Practical AI Implementation",
-    description: "Hands-on session on implementing AI solutions",
-    speaker: "Prof. James Wilson",
-  },
-  {
-    time: "02:00 PM",
-    title: "Panel Discussion: AI Ethics",
-    description: "Expert panel on ethical considerations in AI development",
-    speaker: "Dr. Maria Rodriguez",
-  },
-]
+function getImageUrl(image: any): string {
+  if (!image?.url) return "https://placeholder.pics/svg/250x250";
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+    if (!baseUrl) return "https://placeholder.pics/svg/250x250";
+    return `${baseUrl}${image.url}`;
+  } catch {
+    return "https://placeholder.pics/svg/250x250";
+  }
+}
 
 export default async function EventDetail({
     params,
@@ -73,20 +48,27 @@ export default async function EventDetail({
     params: Promise<{ id: string }>
   }) {
   const id = (await params).id
-  const event = await fetchEventById(id)
-  // console.log(event)
+  const eventResult = await fetchEventById(id)
+  
+  if (eventResult instanceof Error) {
+    console.error('Failed to load event:', eventResult.message)
+    notFound()
+  }
+  
+  const event = eventResult
+  if (!event || !event.title) {
+    notFound()
+  }
 
   const agendaItems = event.agenda || [];
 
   const speakersMap = new Map();
-  agendaItems.forEach((item: any) => {
-    if (item.speaker && !speakersMap.has(item.speaker.id)) {
+  agendaItems.forEach((item: AgendaItem) => {
+    if (item?.speaker?.id && !speakersMap.has(item.speaker.id)) {
       speakersMap.set(item.speaker.id, item.speaker);
     }
   });
   const speakers = Array.from(speakersMap.values());
-
-  console.log(speakers)
 
   return (
     <div className="min-h-screen bg-white">
@@ -96,13 +78,13 @@ export default async function EventDetail({
         <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex gap-2 mb-4">
-            {event.tags?.map((tag: string, tagIndex: number) => (
+            {event.tags?.split(',').map((tag: string, tagIndex: number) => (
                 <Badge
                   key={tagIndex}
                   variant="secondary"
-                  className="bg-white/10 text-white"
+                  className="bg-white/20 backdrop-blur-sm text-white border border-white/20"
                 >
-                  {tag}
+                  {tag.trim()}
                 </Badge>
               ))}
             </div>
@@ -111,7 +93,7 @@ export default async function EventDetail({
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
                 <span>
-                  {new Date(event.datetime).toLocaleDateString("en-US", {
+                  {formatDateTime(event.datetime, {
                     year: "numeric",
                     month: "short",
                     day: "numeric",
@@ -122,15 +104,15 @@ export default async function EventDetail({
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5" />
                 <span>
-                  {new Date(event.datetime).toLocaleTimeString("en-US", {
+                  {formatDateTime(event.datetime, {
                     hour: "numeric",
                     minute: "numeric",
                   })}
-                </span> {/* could add duration */}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                <span>{event.location}</span>
+                <span>{event.location || "Location not specified"}</span>
               </div>
               {/* <div className="flex items-center gap-2">
                 <Users className="w-5 h-5" />
@@ -163,57 +145,57 @@ export default async function EventDetail({
 
             <TabsContent value="about" className="mt-6">
               <div className="prose max-w-none">
-                <p>{event.description}</p>
+                <p>{event.description || "No description available."}</p>
               </div>
             </TabsContent>
 
             <TabsContent value="agenda" className="mt-6">
               <div className="space-y-6">
-                {agendaItems.map((item: any, index: number) => (
-                  <Card key={index}>
-                    <CardContent className="flex gap-4 p-6">
-                      <div className="w-24 flex-shrink-0">
-                        <div className="text-sm font-semibold text-timeline-icon">
-                          {new Date(`${event.datetime.split("T")[0]}T${item.time}`).toLocaleTimeString("en-US", {
-                            hour: "numeric",
-                            minute: "numeric",
-                          })}
+                {agendaItems.length > 0 ? (
+                  agendaItems.map((item: AgendaItem, index: number) => (
+                    <Card key={index}>
+                      <CardContent className="flex gap-4 p-6">
+                        <div className="w-24 flex-shrink-0">
+                          <div className="text-sm font-semibold text-timeline-icon">
+                            {formatTime(event.datetime, item?.time)}
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-2">{item.title}</h3>
-                        <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
-                        {item.speaker && (
-                          <Badge variant="secondary" className="bg-timeline-tag text-black">
-                            {item.speaker.name}
-                          </Badge>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                        <div>
+                          <h3 className="font-semibold mb-2">{item?.title || "Untitled session"}</h3>
+                          <p className="text-sm text-muted-foreground mb-2">{item?.description || "No description available"}</p>
+                          {item?.speaker?.name && (
+                            <Badge variant="secondary" className="bg-timeline-tag text-black">
+                              {item.speaker.name}
+                            </Badge>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))
+                ) : (
+                  <p>No agenda items available.</p>
+                )}
               </div>
             </TabsContent>
 
             <TabsContent value="speakers" className="mt-6">
               {speakers.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {speakers.map((speaker: any, index: number) => (
+                  {speakers.map((speaker, index: number) => (
                     <Card key={index}>
                       <CardContent className="p-6">
                         <div className="aspect-square relative mb-4 rounded-lg overflow-hidden">
-                          {/* Replace with next/image if desired */}
                           <img
-                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${speaker.image.url}` || "https://placeholder.pics/svg/250x250"}
-                            alt={speaker.name}
+                            src={getImageUrl(speaker?.image)}
+                            alt={speaker?.name || "Speaker"}
                             className="object-cover"
                             width={250}
                             height={250}
                           />
                         </div>
-                        <h3 className="font-semibold mb-1">{speaker.name}</h3>
-                        <p className="text-sm text-muted-foreground mb-1">{speaker.role}</p>
-                        <p className="text-sm text-muted-foreground">{speaker.company}</p>
+                        <h3 className="font-semibold mb-1">{speaker?.name || "Name not available"}</h3>
+                        <p className="text-sm text-muted-foreground mb-1">{speaker?.role || "Role not specified"}</p>
+                        <p className="text-sm text-muted-foreground">{speaker?.company || "Company not specified"}</p>
                       </CardContent>
                     </Card>
                   ))}

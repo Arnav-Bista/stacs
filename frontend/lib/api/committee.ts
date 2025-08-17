@@ -18,7 +18,7 @@ function getAcademicYear(): number {
     // Otherwise, return the current year
     return currentYear;
 }
-export async function fetchCommittee(): Promise<CommitteeMember[]> {
+export async function fetchCommittee(): Promise<CommitteeMember[] | Error> {
     try {
         const academicYear = getAcademicYear();
         const filterDate = `${academicYear}-09-01`;
@@ -28,11 +28,11 @@ export async function fetchCommittee(): Promise<CommitteeMember[]> {
         return data.data;
     } catch (error) {
         console.error('Error fetching committee:', error);
-        throw new Error('Failed to fetch committee data: ' + (error instanceof Error ? error.message : 'Unknown error'));
+        return new Error('Failed to fetch committee data: ' + (error instanceof Error ? error.message : 'Unknown error'));
     }
 }
 
-export async function fetchCommitteeById(id: string) {
+export async function fetchCommitteeById(id: string): Promise<CommitteeMember | Error> {
     try {
         const committee = client.collection('committee');
         const response = await committee.findOne(`${id}`, { populate: ['name', 'role', 'description', 'photo', 'executiveCommittee', 'memberID'] });
@@ -42,10 +42,10 @@ export async function fetchCommitteeById(id: string) {
         }
 
         console.log(response);
-        return response.data;
+        return response.data as CommitteeMember;
     } catch (error) {
         console.error(`Error fetching committee member with id ${id}:`, error);
-        throw new Error('Failed to fetch committee member: ' + (error instanceof Error ? error.message : 'Unknown error'));
+        return new Error('Failed to fetch committee member: ' + (error instanceof Error ? error.message : 'Unknown error'));
     }
 
 }
