@@ -1,4 +1,4 @@
-# STACS Website, by STACS: Develoeprs!
+# STACS Website, by STACS: Developers!
 
 St Andrews Computing Society (STACS).
 
