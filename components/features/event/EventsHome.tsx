@@ -1,0 +1,84 @@
+"use client";
+
+import { buttonVariants } from "@/components/ui/button";
+import EventCard from "./EventCard";
+import Link from "next/link";
+import { Event } from "@/lib/types/event";
+import { useEffect, useState } from "react";
+import EventHomeLoading from "./EventsHomeLoading";
+
+async function fetchEvents(): Promise<Event[]> {
+  const response = await fetch('/api/events');
+  if (!response.ok) {
+    throw new Error('Failed to fetch events');
+  }
+  return response.json();
+}
+
+export default function EventsHome() {
+  const [events, setEvents] = useState<Event[] | Error | null>(null);
+
+  useEffect(() => {
+    fetchEvents()
+      .then(setEvents)
+      .catch((error) => setEvents(error));
+  }, []);
+
+  const offset = Math.floor(Math.random() * 10);
+  const eventsErrorTitle = [
+    "Errored Workshop",
+    "Might not be maintanance 😔",
+    "STACS Error Event",
+    "Might be maintanance 🤞",
+  ];
+  const eventsErrorMessage = [
+    "Seems like we need more than 2 potatoes for our server...",
+    "The backend is being a little silly",
+    "Our servers are touching grass, will be back soon!",
+    "I'm a teapot",
+    "Cause of error: an error occurred",
+  ];
+
+  if (events === null) {
+    return <EventHomeLoading />;
+  }
+
+  if (events instanceof Error) {
+    return (
+      <div className="flex flex-wrap justify-center gap-6 w-full">
+        {Array.from({ length: 3 }).map((_, index) => (
+          <EventCard
+            key={index}
+            alt={eventsErrorMessage[(index + offset) % eventsErrorMessage.length]}
+            title={eventsErrorTitle[(index + offset) % eventsErrorTitle.length]}
+            date={
+              new Date().toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+              })}
+            location="No idea!"
+          />
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-wrap justify-center gap-6 w-full">
+      {events.map((event, index: number) => (
+        <EventCard
+          key={index}
+          title={event.title}
+          alt={event.title}
+          date={
+            new Date(event.datetime).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+            })}
+          location={event.location}
+          imgUrl={event.media && event.media[0] ? event.media[0] : undefined}
+        />
+      ))}
+    </div>
+  );
+}
