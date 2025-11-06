@@ -1,7 +1,6 @@
 ---
 name: "Oliver Fraser"
 role: "Developer"
-memberId: "developer-2-2024"
 committeeType: "developer"
 startDate: "2025-09-01"
 photo: "/images/committee/developer-2.jpg"

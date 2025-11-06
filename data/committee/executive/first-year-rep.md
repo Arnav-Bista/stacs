@@ -1,7 +1,6 @@
 ---
 name: "Maya Singh"
 role: "First Year Representative"
-memberId: "first-year-rep-2024"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/first-year-rep.jpg"

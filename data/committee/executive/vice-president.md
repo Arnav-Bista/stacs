@@ -1,7 +1,6 @@
 ---
 name: "Liam Chen"
 role: "Vice President"
-memberId: "vice-president-2024"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/vice-president.jpg"

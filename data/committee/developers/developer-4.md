@@ -1,7 +1,6 @@
 ---
 name: "Ethan McDonald"
 role: "Developer"
-memberId: "developer-4-2024"
 committeeType: "developer"
 startDate: "2025-09-01"
 photo: "/images/committee/developer-4.jpg"

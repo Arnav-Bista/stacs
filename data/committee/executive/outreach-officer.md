@@ -1,7 +1,6 @@
 ---
 name: "James Morrison"
 role: "Outreach Officer"
-memberId: "outreach-officer-2024"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/outreach-officer.jpg"

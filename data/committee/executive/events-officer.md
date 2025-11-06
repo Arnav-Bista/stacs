@@ -1,7 +1,6 @@
 ---
 name: "Sophie Anderson"
 role: "Events Officer"
-memberId: "events-officer-2024"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/events-officer.jpg"

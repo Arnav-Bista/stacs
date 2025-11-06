@@ -1,11 +1,10 @@
 ---
-title: "STACS CTF Competition 2025"
-eventId: "ctf-competition-2025"
-datetime: "2025-11-10T14:00:00"
-location: "Jack Cole Building & Online"
+title: "The STACS CTF"
+datetime: "2026-02-15T14:00:00"
+location: "John Honey"
 tags: "ctf, cybersecurity, competition, hacking"
 media:
-  - "/images/events/ctf-2025.jpg"
+  - "/images/events/stacs-ctf.png"
 order: 4
 agenda:
   - time: "14:00"
@@ -14,13 +13,9 @@ agenda:
   - time: "14:30"
     title: "Beginners' Workshop"
     description: "New to CTFs? Join our intro session"
-    speaker:
-      name: "Hannah Kim"
-      role: "Developer & Security Lead"
-      company: "STACS"
   - time: "20:00"
     title: "Pizza & Social"
-    description: "Take a break and socialize (Jack Cole Building)"
+    description: "Take a break and socialize"
   - time: "14:00+1"
     title: "Competition Closes"
     description: "Submissions deadline"
@@ -31,7 +26,7 @@ agenda:
 
 # Hack the Flag! 🚩
 
-Test your cybersecurity skills in the **annual STACS CTF Competition**! Solve challenges across multiple categories and compete for amazing prizes.
+Test your cybersecurity skills in the **STACS CTF Competition**! Solve challenges across multiple categories and compete for amazing prizes.
 
 ## What is a CTF?
 
@@ -83,7 +78,7 @@ Special prize for the highest-scoring team competing in their first CTF!
 
 Form teams of 1-4 people and register via our Discord server.
 
-**Registration closes**: November 8th
+**Registration closes**: February 13th
 
 ## New to CTFs?
 
@@ -98,21 +93,10 @@ Don't worry! We'll have:
 - Familiarity with at least one programming language
 - Curiosity and problem-solving mindset!
 
-## Schedule
-
-### Saturday, Nov 10th
-- **14:00** - Competition opens
-- **14:30** - Beginners' workshop (Jack Cole 1.33A)
-- **20:00** - Pizza social (Jack Cole Building)
-
-### Sunday, Nov 11th
-- **14:00** - Competition closes
-- **15:00** - Prize ceremony (Jack Cole 1.33A)
-
 ## Join Us In-Person
 
 While the CTF is online, we'll have:
-- A **dedicated room** in Jack Cole Building (14:00-22:00 Saturday)
+- A **dedicated room** in John Honey (14:00-22:00 Saturday)
 - **Pizza and snacks** during the evening session
 - **Mentors available** for questions
 - Great **networking opportunity** with fellow security enthusiasts!
@@ -128,6 +112,4 @@ While the CTF is online, we'll have:
 
 ---
 
-*This competition is organized by the STACS development team and generously supported by our sponsors.*
-
-**Questions?** Join our Discord server or email ctf@stacs-st-andrews.com
+**Questions?** Join our Discord server or email stacs@st-andrews.ac.uk

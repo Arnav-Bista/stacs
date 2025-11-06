@@ -21,13 +21,36 @@ function formatDateTime(datetime: string | undefined, options: Intl.DateTimeForm
   }
 }
 
-function formatTime(datetime: string, time: string) {
-  if (!datetime || !time) return "Time not available";
+function formatAgendaTime(agendaDatetime: string | undefined, eventDatetime: string) {
+  if (!agendaDatetime) return "Time not available";
   try {
-    return new Date(`${datetime.split("T")[0]}T${time}`).toLocaleTimeString("en-US", {
+    const agendaDate = new Date(agendaDatetime);
+    const eventDate = new Date(eventDatetime);
+
+    // Check if the dates are different
+    const agendaDay = agendaDate.toDateString();
+    const eventDay = eventDate.toDateString();
+
+    const timeStr = agendaDate.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "numeric",
     });
+
+    if (agendaDay !== eventDay) {
+      // Show date indicator if different day
+      const dateStr = agendaDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      });
+      return (
+        <div className="flex flex-col">
+          <span className="text-xs text-muted-foreground">{dateStr}</span>
+          <span>{timeStr}</span>
+        </div>
+      );
+    }
+
+    return timeStr;
   } catch {
     return "Invalid time";
   }
@@ -108,6 +131,21 @@ export default async function EventDetail({
         </div>
       </div>
 
+      {/* Event Image */}
+      {event.media && event.media[0] && (
+        <div className="container mx-auto px-4 py-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden bg-gradient-to-br from-muted/30 to-muted/50 flex items-center justify-center">
+              <img
+                src={event.media[0]}
+                alt={event.title}
+                className="max-h-full max-w-full object-contain p-8"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
@@ -144,7 +182,7 @@ export default async function EventDetail({
                       <CardContent className="flex gap-4 p-6">
                         <div className="w-24 flex-shrink-0">
                           <div className="text-sm font-semibold text-timeline-icon">
-                            {formatTime(event.datetime, item?.time)}
+                            {formatAgendaTime(item?.datetime, event.datetime)}
                           </div>
                         </div>
                         <div>

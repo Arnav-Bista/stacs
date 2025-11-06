@@ -26,10 +26,13 @@ function parseCommitteeMemberFile(filePath: string, directory: 'executive' | 'de
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContent);
 
+    // Automatically derive memberId from filename
+    const fileName = path.basename(filePath, '.md');
+
     return {
         name: data.name,
         role: data.role,
-        memberId: data.memberId,
+        memberId: fileName, // Use filename instead of frontmatter
         description: content.trim(),
         committeeType: directory === 'executive' ? CommitteeType.EXECUTIVE : CommitteeType.DEVELOPERS,
         photo: data.photo,

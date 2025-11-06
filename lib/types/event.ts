@@ -1,5 +1,6 @@
 export interface AgendaItem {
-    time: string;
+    time: string; // Display time (e.g., "14:00" or "14:00+1")
+    datetime: string; // Full ISO datetime parsed from time + event date
     title: string;
     description: string;
     speaker?: {

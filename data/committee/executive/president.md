@@ -1,7 +1,6 @@
 ---
 name: "Emma MacLeod"
 role: "President"
-memberId: "president-2024"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/president.jpg"

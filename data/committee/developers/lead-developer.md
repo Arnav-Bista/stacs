@@ -1,7 +1,6 @@
 ---
 name: "Ryan O'Sullivan"
 role: "Lead Developer"
-memberId: "lead-dev-2024"
 committeeType: "developer"
 startDate: "2025-09-01"
 photo: "/images/committee/lead-developer.jpg"

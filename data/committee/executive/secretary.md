@@ -1,7 +1,6 @@
 ---
 name: "Aisha Patel"
 role: "Secretary"
-memberId: "secretary-2024"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/secretary.jpg"

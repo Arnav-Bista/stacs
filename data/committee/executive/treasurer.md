@@ -1,7 +1,6 @@
 ---
 name: "Callum Robertson"
 role: "Treasurer"
-memberId: "treasurer-2024"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/treasurer.jpg"

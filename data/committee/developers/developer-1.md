@@ -1,7 +1,6 @@
 ---
 name: "Zara Ahmed"
 role: "Developer"
-memberId: "developer-1-2024"
 committeeType: "developer"
 startDate: "2025-09-01"
 photo: "/images/committee/developer-1.jpg"
