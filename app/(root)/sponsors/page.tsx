@@ -116,7 +116,7 @@ export default async function SponsorsPage() {
             VIEW SPONSORSHIP PACKAGES
           </Link>
           <Link 
-            href="mailto:contact@stacs.cs.st-andrews.ac.uk" 
+            href="mailto:stacs@st-andrews.ac.uk" 
             className={`${buttonVariants({ variant: "outline" })} text-lg px-8 py-3 h-auto`}
           >
             GET IN TOUCH

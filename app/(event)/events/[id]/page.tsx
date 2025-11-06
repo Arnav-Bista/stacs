@@ -73,7 +73,7 @@ export default async function EventDetail({
                 </Badge>
               ))}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">{event.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">{event.title}</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/90">
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />

@@ -1,31 +1,28 @@
-interface SponsorshipTileProps {
+import { Card } from "@/components/ui/card";
+import { ReactNode } from "react";
+
+interface SponsorOptionTile {
+  title: string;
+  children: ReactNode;
+  price: string;
+  avalibility?: string;
+  color?: string;
   className?: string;
-  packageTier?: string;
-  packageColour?: string;
-  packagePrice?: string;
-  packageDescription?: string;
-  children?: React.ReactNode;
+  cardClassName?: string;
 }
 
-export default function SponsorshipTile({ className, packagePrice = "£0", packageTier="package-tier", packageColour="gray", children }: SponsorshipTileProps) {
+export default function SponsorOptionTile(props: SponsorOptionTile) {
   return (
-    <div className={`bg-[#f5ebe1] w-64 h-84 px-5 py-2 items-start justify-center rounded-2xl mx-2 ${className || ''}`}>
-      <div 
-        style={{ backgroundColor: packageColour }} 
-        className="w-50 h-10 flex items-center justify-center rounded-xl mx-2}">
-        <h2 className="text-white text-2xl font-bold text-center">{packageTier}</h2>
-
+    <div className={props.className}>
+      <div className={`relative text-center py-2 px-4 rounded-3xl ${props.color} text-white font-bold translate-y-1/2 z-10 overflow-visible w-min mx-auto text-nowrap shadow-lg`}>
+        {props.title}
       </div>
-      <div className="h-80 flex flex-col w-34 items-center justify-center">
-      {children}
-      </div>
-      <div 
-        style={{ backgroundColor: packageColour }} 
-        className="w-40 h-10 flex items-center justify-center rounded-3xl mx-auto">
-        <h2 className="text-white text-2xl font-bold text-center">{packagePrice}</h2>
-
+      <Card className={`relative p-8 bg-muted z-0 shadow-xl border-2 border-border/50 ${props.cardClassName}`}>
+        {props.children}
+      </Card>
+      <div className={`relative text-center py-3 px-6 rounded-3xl ${props.color} text-white font-bold -translate-y-1/2 z-10 overflow-visible w-min mx-auto text-nowrap text-xl shadow-lg`}>
+        {props.price}
       </div>
     </div>
   );
 }
-
