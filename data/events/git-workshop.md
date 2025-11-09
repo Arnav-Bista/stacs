@@ -5,7 +5,6 @@ location: "John Honey"
 tags: "workshop, git, version-control"
 media:
   - "/images/events/git-workshop.png"
-order: 1
 agenda:
   - time: "13:00"
     title: "Workshop Begins"
