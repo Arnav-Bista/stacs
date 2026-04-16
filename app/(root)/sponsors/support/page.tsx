@@ -54,13 +54,13 @@ export default function SponsorSupportPage() {
               price="£500"
               className="max-w-sm"
             >
-              <p className="text-s text-left">
+              <div className="text-s text-left">
                 <ul className="list-disc space-y-2">
                   <li>Logo and advertisement on STACS social media channels, website and weekly email</li>
                   <li>Share job advertisements and opportunities with our members</li>
                   <li><b>10% discount</b> on any premium events package to be used alongside the purchase of society package</li>
                 </ul>
-              </p>
+              </div>
             </SponsorshipTile>
             <SponsorshipTile
               title="Silver Tier"
@@ -70,12 +70,12 @@ export default function SponsorSupportPage() {
               cardClassName="min-h-72 flex flex-col"
             >
               <p className="text-sm font-bold text-center mb-3 text-slate-700">Bronze Benefits +</p>
-              <p className="text-s text-left">
+              <div className="text-s text-left">
                 <ul className="list-disc space-y-2">
                   <li>Advertisement on social media at beginning of semester</li>
                   <li>One <b>free event</b> can be organised in cooperation with STACS for our members</li>
                 </ul>
-              </p>
+              </div>
             </SponsorshipTile>
             <SponsorshipTile
               title="Gold Tier"
@@ -84,14 +84,14 @@ export default function SponsorSupportPage() {
               className="max-w-md"
             >
               <p className="text-sm font-bold text-center mb-3 text-amber-800">Bronze and Silver Benefits +</p>
-              <p className="text-s text-left">
+              <div className="text-s text-left">
                 <ul className="list-disc space-y-2">
                   <li>Company logo on our <b>merchandise</b></li>
                   <li>Regular advertisement on social media</li>
                   <li>One <b>additional free event</b> can be organised (2 total)*</li>
                   <li><b>Free advertising</b> at Hack the Bubble and CTF</li>
                 </ul>
-              </p>
+              </div>
             </SponsorshipTile>
           </div>
 
@@ -123,14 +123,14 @@ export default function SponsorSupportPage() {
               className="max-w-sm"
               cardClassName="min-h-[27rem] flex flex-col"
             >
-              <p className="text-s text-left mb-4">
+              <div className="text-s text-left mb-4">
                 <ul className="list-disc space-y-1">
                   <li>Logo on event advertisements</li>
                   <li>Media distribution at event</li>
                   <li>Intern and graduate opportunities advertised at the hackathon</li>
                   <li>Set a small challenge at the hackathon with one standout winner</li>
                 </ul>
-              </p>
+              </div>
               <div className="text-center mt-auto mb-4">
                 <AvailabilityBadge text="3 Available" variant="success" />
               </div>
@@ -143,7 +143,7 @@ export default function SponsorSupportPage() {
               cardClassName="min-h-[27rem] flex flex-col"
             >
               <p className="text-sm font-bold text-center mb-3 text-emerald-700">Standard Benefits +</p>
-              <p className="text-s text-left mb-4">
+              <div className="text-s text-left mb-4">
                 <ul className="list-disc space-y-1">
                   <li>Largest logo on branded merchandise</li>
                   <li>Logo on all presentations used for event</li>
@@ -152,7 +152,7 @@ export default function SponsorSupportPage() {
                   <li>Set a major challenge for the hackathon</li>
                   <li>Judge alongside BCS</li>
                 </ul>
-              </p>
+              </div>
               <div className="text-center mt-auto mb-4 flex gap-4 justify-evenly">
                 <AvailabilityBadge text="1 Available" variant="success" />
                 <AvailabilityBadge text="PARTNERED" variant="error" /> 

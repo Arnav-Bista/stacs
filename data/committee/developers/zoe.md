@@ -1,7 +1,6 @@
 ---
-name: "Zoe"
+name: "Zoé Nickson"
 role: "Dev"
-memberId: "zoe"
 committeeType: "developer"
 startDate: "2025-09-01"
 photo: "/images/committee/zoe.jpg"

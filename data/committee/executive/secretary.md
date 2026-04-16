@@ -1,10 +1,8 @@
 ---
-name: "Aisha Patel"
+name: "Marcus Darwin"
 role: "Secretary"
 committeeType: "executive"
 startDate: "2025-09-01"
 photo: "/images/committee/secretary.jpg"
-order: 3
+order: 2
 ---
-
-Aisha is a 2nd year Computer Science student managing all communications and administrative tasks for STACS. She keeps meeting minutes, coordinates with university staff, and ensures smooth operations behind the scenes. Outside of STACS, she enjoys competitive programming and has represented St Andrews at UKIEPC.

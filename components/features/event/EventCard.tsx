@@ -1,5 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 import { Calendar, MapPin } from "lucide-react"
+import Link from "next/link"
 
 interface EventCardProps {
   className?: string
@@ -8,6 +10,7 @@ interface EventCardProps {
   date: string
   location: string
   imgUrl?: string
+  href?: string
 }
 
 function parseDate(dateString: string) {
@@ -34,12 +37,10 @@ function parseDate(dateString: string) {
 }
 
 export default function EventCard(props: EventCardProps) {
-
-
   const { day, month } = parseDate(props.date)
 
-  return (
-    <Card className={`group max-w-xs overflow-hidden rounded-xl w-full transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${props.className || ""}`}>
+  const card = (
+    <Card className={cn("group overflow-hidden rounded-xl w-full transition-all duration-200 hover:shadow-lg hover:-translate-y-1", !props.href && "max-w-xs", !props.href && props.className)}>
       <div className="relative h-36 overflow-hidden">
         {props.imgUrl ? (
           <img
@@ -81,4 +82,14 @@ export default function EventCard(props: EventCardProps) {
       </CardContent>
     </Card>
   )
+
+  if (props.href) {
+    return (
+      <Link href={props.href} className={cn("block max-w-xs w-full", props.className)}>
+        {card}
+      </Link>
+    )
+  }
+
+  return card
 }

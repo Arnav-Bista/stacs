@@ -1,27 +1,23 @@
-:root {
-  --path-length: 50;
-}
-
 .murraybg {
-  fill: none;
-  stroke: black;
   opacity: 0.03;
-  stroke-width: 0.5;
-  stroke-dasharray: var(--path-length);
-  stroke-dashoffset: var(--path-length);
-
-  animation: a 100s linear infinite;
-
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 50%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, black 50%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 200% 100%;
+          mask-size: 200% 100%;
+  animation: murraybg-sweep 100s linear infinite;
 }
 
-@keyframes a {
-  0% {
-    stroke-dashoffset: var(--path-length);
-  }
-  50% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: var(--path-length);
+@keyframes murraybg-sweep {
+  0%   { -webkit-mask-position: 100% 0;   mask-position: 100% 0; }
+  100% { -webkit-mask-position: -100% 0;  mask-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .murraybg {
+    animation: none;
+    -webkit-mask-image: none;
+            mask-image: none;
   }
 }

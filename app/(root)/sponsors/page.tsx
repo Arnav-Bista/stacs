@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { buttonVariants } from "@/components/ui/button";
 import { fetchSponsors } from "@/lib/markdown/sponsors";
-import { SponsorTileLarge, SponsorTileLogo } from "@/components/features/sponsors/SponsorTile";
+import { SponsorTileLogo } from "@/components/features/sponsors/SponsorTile";
 
 export const revalidate = 300; // 5 minutes
 
@@ -91,9 +91,8 @@ export default async function SponsorsPage() {
               name={sponsor.name}
               imageUrl={sponsor.logoSmall || "https://placeholder.pics/svg/100"}
               website={sponsor.website}
-              textColor={sponsor.textColor}
               backgroundColor={sponsor.backgroundColor}
-              className="w-80 h-40"
+              className="w-80 h-44"
             />
           ))}
         </div>

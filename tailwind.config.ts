@@ -56,6 +56,7 @@ export default {
 				card: "#dff49e",
 				tag: "#d9d9d9",
 			  },
+			murray: 'hsl(var(--murray))',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

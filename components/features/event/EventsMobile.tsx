@@ -18,6 +18,7 @@ export default function EventsMobile({ events }: EventsMobileProps) {
             date={event.datetime}
             location={event.location}
             imgUrl={event.media && event.media[0] ? event.media[0] : undefined}
+            href={`/events/${event.eventId}`}
             className="w-full max-w-none"
           />
           <Link

@@ -19,7 +19,7 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
       {/* Arrow Heads */}
       <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-2">
         <Image
-          className="mx-auto"
+          className="mx-auto rotate-180"
           src="/rocket.svg"
           width={50}
           height={50}
@@ -28,7 +28,7 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
       </div>
       <div className="absolute left-1/2 transform -translate-x-1/2 -top-2">
         <Image
-          className="mx-auto"
+          className="mx-auto rotate-180"
           src="/rocket.svg"
           width={50}
           height={50}
@@ -54,7 +54,7 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
               }`}
             >
               <Image
-                className="mx-auto"
+                className="mx-auto rotate-180"
                 src="/rocket.svg"
                 width={50}
                 height={50}
@@ -84,6 +84,7 @@ export default function EventsTimeline({ events }: EventsTimelineProps) {
                   date={event.datetime}
                   location={event.location}
                   imgUrl={event.media && event.media[0] ? event.media[0] : undefined}
+                  href={`/events/${event.eventId}`}
                   className="w-full max-w-none"
                 />
                 <Link

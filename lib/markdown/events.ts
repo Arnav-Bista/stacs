@@ -68,8 +68,8 @@ function parseEventFile(filePath: string): Event {
 }
 
 /**
- * Fetch all events from markdown files
- * Returns events sorted by order field
+ * Fetch all events from markdown files.
+ * Returns upcoming events first (soonest first), then past events (most recent first).
  */
 export async function fetchEvents(): Promise<Event[]> {
     const eventsDir = path.join(process.cwd(), 'data/events');
@@ -89,8 +89,16 @@ export async function fetchEvents(): Promise<Event[]> {
         events.push(event);
     }
 
-    // Sort by datetime (earliest events first)
-    events.sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime());
+    const now = Date.now();
+    events.sort((a, b) => {
+        const aTime = new Date(a.datetime).getTime();
+        const bTime = new Date(b.datetime).getTime();
+        const aUpcoming = aTime >= now;
+        const bUpcoming = bTime >= now;
+        if (aUpcoming && !bUpcoming) return -1;
+        if (!aUpcoming && bUpcoming) return 1;
+        return aUpcoming ? aTime - bTime : bTime - aTime;
+    });
 
     return events;
 }

@@ -1,0 +1,92 @@
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  transition: color 200ms ease;
+}
+
+.nav-bracket {
+  display: inline-block;
+  color: hsl(var(--murray));
+  opacity: 0;
+  transition:
+    opacity 220ms ease,
+    transform 260ms cubic-bezier(0.41, 0, 0, 1);
+  pointer-events: none;
+}
+
+.nav-bracket[data-side="left"] {
+  transform: translateX(0.35rem);
+  margin-right: 0.15rem;
+}
+
+.nav-bracket[data-side="right"] {
+  transform: translateX(-0.35rem);
+  margin-left: 0.15rem;
+}
+
+.nav-link:hover .nav-bracket,
+.nav-link[data-active="true"] .nav-bracket {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-label {
+  font-feature-settings: "ss01", "calt";
+  letter-spacing: 0.04em;
+}
+
+.nav-drawer {
+  transition: transform 480ms cubic-bezier(0.41, 0, 0, 1);
+}
+
+.nav-drawer[data-open="false"] {
+  transform: translateX(-100%);
+}
+
+.nav-drawer[data-open="true"] {
+  transform: translateX(0);
+}
+
+.nav-drawer-item {
+  opacity: 0;
+  transform: translateX(-1.25rem);
+  transition:
+    opacity 380ms cubic-bezier(0.41, 0, 0, 1),
+    transform 380ms cubic-bezier(0.41, 0, 0, 1);
+}
+
+.nav-drawer[data-open="true"] .nav-drawer-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-drawer-flourish {
+  position: relative;
+  width: 100%;
+  height: 6rem;
+  color: hsl(var(--murray));
+  opacity: 0.9;
+}
+
+.nav-drawer-flourish svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.nav-drawer-flourish polyline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.nav-drawer[data-open="true"] .nav-drawer-flourish polyline {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1600ms cubic-bezier(0.41, 0, 0, 1) 240ms;
+}
+
+.nav-shadow-base {
+  transition: box-shadow 220ms ease;
+}

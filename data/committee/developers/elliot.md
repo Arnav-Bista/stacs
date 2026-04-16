@@ -1,7 +1,6 @@
 ---
-name: "Elliot Hipkiss"
+name: "Elliot Hipkess"
 role: "Dev"
-memberId: "ehipkiss"
 committeeType: "developer"
 startDate: "2025-09-01"
 photo: "/images/committee/elliot.jpg"

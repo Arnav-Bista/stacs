@@ -6,11 +6,10 @@ This directory contains markdown files for STACS sponsors.
 
 ```
 data/sponsors/
-├── blackrock.md
-├── ncr-atleos.md
-├── dorahacks.md
-├── github.md
-├── jetbrains.md
+├── gsa-capital.md
+├── jp-morgan.md
+├── qrt.md
+├── tpp.md
 └── README.md
 ```
 
@@ -21,8 +20,8 @@ Each sponsor is represented by a markdown file with frontmatter:
 ```markdown
 ---
 name: "Company Name"
-logoSmall: "/images/sponsors/company-small.png"   # Small logo for cards
-logoBig: "/images/sponsors/company-large.png"     # Large logo for detail view
+logoSmall: "/images/sponsors/company.svg"          # Logo used in cards / homepage
+logoBig: "/images/sponsors/company.svg"            # Logo for the detail view (can be the same file)
 textColor: "#FFFFFF"                               # Hex color for sponsor name text
 backgroundColor: "#000000"                         # Hex color for card background
 website: "https://company.com"                     # Optional sponsor website
@@ -38,28 +37,25 @@ Brief description of the sponsor company and their contribution to STACS.
 1. Create a new `.md` file in `data/sponsors/` (use company name as filename)
 2. Fill in the frontmatter with sponsor details
 3. Add a brief description in the markdown body
-4. Add sponsor logos to `/public/images/sponsors/`:
-   - `company-small.png` - Small logo (recommended: 200x100px)
-   - `company-large.png` - Large logo (recommended: 400x200px)
+4. Add the sponsor logo to `/public/images/sponsors/` (SVG preferred — see below)
 
 ## Logo Guidelines
 
 ### Image Files
 - Place sponsor logos in `/public/images/sponsors/`
-- Use `.png` format with transparent backgrounds
-- Provide two versions:
-  - **Small**: For sponsor cards and homepage (`-small.png`)
-  - **Large**: For detailed sponsor page (`-large.png`)
+- **SVG is preferred** — the renderer uses a plain `<img>` tag, so SVG, PNG, or WebP all work. SVG scales cleanly at any size.
+- For raster formats, use transparent backgrounds (PNG/WebP).
+- A single SVG can be used for both `logoSmall` and `logoBig`.
 
-### Recommended Sizes
-- Small logo: 200x100px (or similar aspect ratio)
-- Large logo: 400x200px (or similar aspect ratio)
-- Keep aspect ratio consistent with company branding
+### Recommended Sizing
+- For SVG: any viewBox works; roughly 4:2 aspect (e.g. `viewBox="0 0 400 200"`) gives the best fit in the existing card layout.
+- For raster fallbacks: ~400px wide is plenty (the card renders the logo at ~64px tall).
+- Keep aspect ratio consistent with company branding.
 
 ### File Naming
 Use kebab-case for filenames:
-- ✅ `company-name-small.png`
-- ❌ `Company Name Small.png`
+- ✅ `company-name.svg`
+- ❌ `Company Name.svg`
 
 ## Sponsorship Tiers
 
@@ -94,8 +90,8 @@ Sponsors are sorted by the `order` field (lower numbers appear first). Typically
 ```markdown
 ---
 name: "Example Corp"
-logoSmall: "/images/sponsors/example-corp-small.png"
-logoBig: "/images/sponsors/example-corp-large.png"
+logoSmall: "/images/sponsors/example-corp.svg"
+logoBig: "/images/sponsors/example-corp.svg"
 textColor: "#FFFFFF"
 backgroundColor: "#0066CC"
 website: "https://example.com"

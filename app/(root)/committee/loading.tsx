@@ -6,7 +6,7 @@ export default function CommitteePageLoading() {
       <h1 className="mt-8">MEET THE COMMITTEE</h1>
       <h2>EXECUTIVE</h2>
       <p className="text-center">
-        The team responsible for the overarching club, overseeing operations, sponsors, flagship events and money.
+        The team responsible for overseeing operations, sponsors, flagship events and handling finance.
       </p>
       <div className="flex flex-wrap justify-center w-full gap-4 mt-4">
         {Array.from({ length: 7 }).map((_, index) => <CommitteeCardExtendedLoading key={index} />)}

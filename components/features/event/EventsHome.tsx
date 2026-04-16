@@ -1,8 +1,6 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
 import EventCard from "./EventCard";
-import Link from "next/link";
 import { Event } from "@/lib/types/event";
 import { useEffect, useState } from "react";
 import EventHomeLoading from "./EventsHomeLoading";
@@ -65,7 +63,7 @@ export default function EventsHome() {
 
   return (
     <div className="flex flex-wrap justify-center gap-6 w-full">
-      {events.map((event, index: number) => (
+      {events.slice(0, 3).map((event, index: number) => (
         <EventCard
           key={index}
           title={event.title}
@@ -77,6 +75,7 @@ export default function EventsHome() {
             })}
           location={event.location}
           imgUrl={event.media && event.media[0] ? event.media[0] : undefined}
+          href={`/events/${event.eventId}`}
         />
       ))}
     </div>
