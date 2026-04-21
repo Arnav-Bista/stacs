@@ -3,7 +3,7 @@ name: "Jake Brockwell"
 role: "Dev"
 committeeType: "developer"
 startDate: "2025-09-01"
-photo: "/images/committee/jake.jpg"
+photo: "/images/committee/jake-brockwell.jpg"
 order: 6
 ---
 

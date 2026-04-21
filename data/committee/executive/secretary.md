@@ -1,8 +1,8 @@
 ---
-name: "Marcus Darwin"
+name: "Ksenia Baatz"
 role: "Secretary"
 committeeType: "executive"
 startDate: "2025-09-01"
-photo: "/images/committee/secretary.jpg"
-order: 2
+photo: "/images/committee/ksenia-baatz.jpg"
+order: 3
 ---
