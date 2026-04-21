@@ -4,8 +4,6 @@ import PageDecorations from "@/components/features/event/PageDecorations";
 import EventsTimeline from "@/components/features/event/EventsTimeline";
 import EventsMobile from "@/components/features/event/EventsMobile";
 
-export const dynamic = 'force-dynamic';
-
 export default async function Events() {
   const events = await fetchEvents();
 

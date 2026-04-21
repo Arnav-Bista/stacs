@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
+  trailingSlash: true,
   images: {
-    domains: ['localhost', 'placeholder.pics', 'example.com'],
+    unoptimized: true,
+    domains: ["localhost", "placeholder.pics", "example.com"],
   },
 };
 

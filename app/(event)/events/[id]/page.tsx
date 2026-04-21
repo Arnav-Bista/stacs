@@ -4,13 +4,16 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 // import Image from "next/image"
-import { fetchEventById } from "@/lib/markdown/events"
+import { fetchEventById, fetchEvents } from "@/lib/markdown/events"
 import { notFound } from "next/navigation"
 import { AgendaItem } from "@/lib/types/event"
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-export const revalidate = 300; // 5 minutes
+export async function generateStaticParams() {
+  const events = await fetchEvents()
+  return events.map((event) => ({ id: event.eventId }))
+}
 
 function formatDateTime(datetime: string | undefined, options: Intl.DateTimeFormatOptions) {
   if (!datetime) return "Date not available";

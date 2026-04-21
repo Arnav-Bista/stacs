@@ -1,6 +1,8 @@
 import { fetchEvents } from '@/lib/markdown/events';
 import { NextResponse } from 'next/server';
 
+export const dynamic = "force-static";
+
 export async function GET() {
     try {
         const events = await fetchEvents();
