@@ -1,8 +1,8 @@
 ---
-name: "Andra Palada"
+name: "Zena O'Ferrall"
 role: "Events Manager"
 committeeType: "executive"
-startDate: "2025-09-01"
-photo: "/images/committee/andra-palada.jpg"
+startDate: "2026-05-01"
+photo: "/images/committee/zena-oferrall.jpg"
 order: 8
 ---

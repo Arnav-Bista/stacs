@@ -1,8 +1,8 @@
 ---
-name: "Vincent Pickering"
+name: "Hanaa Khan"
 role: "Social Media"
 committeeType: "executive"
-startDate: "2025-09-01"
-photo: "/images/committee/vincent-pickering.jpg"
+startDate: "2026-05-01"
+photo: "/images/committee/hanaa-kang.jpg"
 order: 6
 ---

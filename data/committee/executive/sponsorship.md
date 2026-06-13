@@ -1,8 +1,8 @@
 ---
-name: "Zoe Chung"
+name: "Osi Mayungbo"
 role: "Sponsorship"
 committeeType: "executive"
-startDate: "2025-09-01"
-photo: "/images/committee/zoe-chung.jpg"
+startDate: "2026-05-01"
+photo: ""
 order: 5
 ---

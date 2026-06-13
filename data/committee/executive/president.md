@@ -1,8 +1,8 @@
 ---
-name: "Sophia Terry"
+name: "Marcus Darwin"
 role: "President"
 committeeType: "executive"
-startDate: "2025-09-01"
-photo: "/images/committee/sophia-terry.png"
+startDate: "2026-05-01"
+photo: "/images/committee/marcus-darwin.png"
 order: 1
 ---

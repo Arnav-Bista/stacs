@@ -1,9 +1,9 @@
 ---
-name: "Arnav Bista"
+name: "Jake Brockwell"
 role: "Subcommittee President"
 committeeType: "developer"
-startDate: "2025-09-01"
-photo: "/images/committee/arnav-bista.jpg"
+startDate: "2026-05-01"
+photo: "/images/committee/jake.jpg"
 order: 1
 ---
 

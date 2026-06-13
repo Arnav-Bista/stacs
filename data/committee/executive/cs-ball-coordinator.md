@@ -1,8 +1,8 @@
 ---
-name: "Hanaa Khan"
+name: "Rohan Dyce"
 role: "CS Ball Coordinator"
 committeeType: "executive"
-startDate: "2025-09-01"
-photo: "/images/committee/hanaa-khan.jpg"
+startDate: "2026-05-01"
+photo: ""
 order: 4
 ---

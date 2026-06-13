@@ -2,7 +2,7 @@
 name: "Poppy Brown"
 role: "Secretary"
 committeeType: "executive"
-startDate: "2025-09-01"
-photo: "/images/committee/ksenia-baatz.jpg"
+startDate: "2026-05-01"
+photo: "/images/committee/poppy-brown.jpg"
 order: 3
 ---

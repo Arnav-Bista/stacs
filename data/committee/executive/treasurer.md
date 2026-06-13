@@ -1,8 +1,8 @@
 ---
-name: "Marcus Darwin"
+name: "Zoe Chung"
 role: "Treasurer"
 committeeType: "executive"
-startDate: "2025-09-01"
-photo: "/images/committee/marcus-darwin.jpg"
+startDate: "2026-05-01"
+photo: "/images/committee/zoe-chung.jpg"
 order: 2
 ---
