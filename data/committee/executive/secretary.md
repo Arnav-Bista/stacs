@@ -1,5 +1,5 @@
 ---
-name: "Poppy Brown"
+name: "Poppy brown"
 role: "Secretary"
 committeeType: "executive"
 startDate: "2026-05-01"
