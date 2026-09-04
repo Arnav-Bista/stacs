@@ -1,6 +1,6 @@
 ---
 title: "STACS x WICS Pub Quiz"
-datetime: "2026-09-13T14:00:00"
+datetime: "2026-09-13T16:00:00"
 location: "The Rule"
 tags: "social, wellbeing"
 order: 13
