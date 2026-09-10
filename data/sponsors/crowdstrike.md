@@ -1,7 +1,7 @@
 ---
 name: "Crowdstrike"
-logoSmall: "/images/sponsors/crowdstrike-logo.jpeg"
-logoBig: "/images/sponsors/crowdstrike-logo.jpeg"
+logoSmall: "/images/sponsors/crowdstrike.svg"
+logoBig: "/images/sponsors/crowdstrike.svg"
 textColor: "#000000"
 backgroundColor: "#FFFFFF"
 website: "https://www.crowdstrike.com/en-gb/"
